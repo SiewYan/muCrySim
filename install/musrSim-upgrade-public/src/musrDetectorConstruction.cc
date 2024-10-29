@@ -1771,14 +1771,12 @@ void musrDetectorConstruction::DefineMaterials()
   Concrete->AddElement(Fe, 0.04);
   Concrete->AddElement(Al, 0.04);
 
-  G4Material* mud = new G4Material("Mud", density = 1.8 * CLHEP::g/CLHEP::cm3, ncomponents=4); // 4 components in this mix
-  
-  // Adding components based on typical mud composition by fraction
-  mud->AddElement(H, 0.02);   // Approx. 2% Hydrogen (mostly from water)
-  mud->AddElement(O, 0.50);   // Approx. 50% Oxygen
-  mud->AddElement(Si, 0.28);  // Approx. 28% Silicon
-  mud->AddElement(Al, 0.10);  // Approx. 10% Aluminum
-  mud->AddElement(Fe, 0.10);  // Approx. 10% Iron
+  G4Material* mud = new G4Material("Mud", density = 1.8 * CLHEP::g/CLHEP::cm3, ncomponents=5);
+  mud->AddElement(H, 0.02);
+  mud->AddElement(O, 0.50);
+  mud->AddElement(Si, 0.28);
+  mud->AddElement(Al, 0.10);
+  mud->AddElement(Fe, 0.10);
   
 //
 // examples of vacuum
