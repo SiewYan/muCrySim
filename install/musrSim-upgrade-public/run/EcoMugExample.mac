@@ -1,0 +1,177 @@
+#-----------------------------------------------------------------------
+# Macro file cosmic muon distribution from CRY
+#-----------------------------------------------------------------------
+
+#############################  G E O M E T R Y  ###################################
+# WORLD
+/musr/command construct box World   10000 10000 10000 G4_AIR    0 0 0 no_logical_volume norot dead -1
+
+# COLORS
+/musr/command visattributes log_World invisible
+
+#########################  P H Y S I C S      P R O C E S S E S  ##################
+
+/musr/command process addDiscreteProcess gamma G4PhotoElectricEffect
+/musr/command process addDiscreteProcess gamma G4ComptonScattering
+/musr/command process addDiscreteProcess gamma G4GammaConversion
+/musr/command process addDiscreteProcess gamma G4RayleighScattering
+#/musr/command process addProcess         e-    G4eMultipleScattering    -1  1  1
+#/musr/command process addProcess         e-    G4eIonisation            -1  2  2
+#/musr/command process addProcess         e-    G4eBremsstrahlung        -1  3  3
+#/musr/command process addProcess         e+    G4eMultipleScattering    -1  1  1
+#/musr/command process addProcess         e+    G4eIonisation            -1  2  2
+#/musr/command process addProcess         e+    G4eBremsstrahlung        -1  3  3
+#/musr/command process addProcess         e+    G4eplusAnnihilation       0 -1  4
+/musr/command process addProcess         mu-   G4MuMultipleScattering   -1  1  1
+/musr/command process addProcess         mu-   G4MuIonisation           -1  2  2
+/musr/command process addProcess         mu-   G4MuBremsstrahlung       -1  3  3
+/musr/command process addProcess         mu-   G4MuPairProduction       -1  4  4
+/musr/command process addProcess         mu+   G4MuMultipleScattering   -1  1  1
+/musr/command process addProcess         mu+   G4MuIonisation           -1  2  2
+/musr/command process addProcess         mu+   G4MuBremsstrahlung       -1  3  3
+/musr/command process addProcess         mu+   G4MuPairProduction       -1  4  4
+
+##################  S O M E   O T H E R    P A R A M E T E R S   ##################
+
+# Set the minimum time separation between two subsequent signals in the same detector (in ns)
+/musr/command signalSeparationTime 50
+/musr/run/howOftenToPrintEvent 10000
+
+# random seed option
+/musr/run/randomOption 2
+
+# VISUALISATION
+/control/execute visVRML.mac
+
+/musr/command storeOnlyEventsWithHits false
+
+#########################   R O O T     O U T P U T  ##############################
+
+#/musr/command rootOutput runID off
+#/musr/command rootOutput eventID off
+/musr/command rootOutput weight off
+/musr/command rootOutput BFieldAtDecay off
+#/musr/command rootOutput muIniPosX off
+#/musr/command rootOutput muIniPosY off
+#/musr/command rootOutput muIniPosZ off
+#/musr/command rootOutput muIniMomX off
+#/musr/command rootOutput muIniMomY off
+#/musr/command rootOutput muIniMomZ off
+#/musr/command rootOutput muIniPolX off
+#/musr/command rootOutput muIniPolY off
+#/musr/command rootOutput muIniPolZ off
+#/musr/command rootOutput muIniTime off
+/musr/command rootOutput parIniPosX off
+/musr/command rootOutput parIniPosY off
+/musr/command rootOutput parIniPosZ off
+/musr/command rootOutput parIniMomX off
+/musr/command rootOutput parIniMomY off
+/musr/command rootOutput parIniMomZ off
+/musr/command rootOutput parIniTime off
+/musr/command rootOutput parID off
+/musr/command rootOutput muDecayDetID off
+/musr/command rootOutput muDecayPosX off
+/musr/command rootOutput muDecayPosY off
+/musr/command rootOutput muDecayPosZ off
+/musr/command rootOutput muDecayTime off
+/musr/command rootOutput muDecayPolX off
+/musr/command rootOutput muDecayPolY off
+/musr/command rootOutput muDecayPolZ off
+/musr/command rootOutput muTargetTime off
+/musr/command rootOutput muTargetPolX off
+/musr/command rootOutput muTargetPolY off
+/musr/command rootOutput muTargetPolZ off
+/musr/command rootOutput muM0Time off
+/musr/command rootOutput muM0PolX off
+/musr/command rootOutput muM0PolY off
+/musr/command rootOutput muM0PolZ off
+/musr/command rootOutput muM1Time off
+/musr/command rootOutput muM1PolX off
+/musr/command rootOutput muM1PolY off
+/musr/command rootOutput muM1PolZ off
+/musr/command rootOutput muM2Time off
+/musr/command rootOutput muM2PolX off
+/musr/command rootOutput muM2PolY off
+/musr/command rootOutput muM2PolZ off
+/musr/command rootOutput posIniMomX off
+/musr/command rootOutput posIniMomY off
+/musr/command rootOutput posIniMomZ off
+/musr/command rootOutput fieldNomVal off
+/musr/command rootOutput det_ID off
+/musr/command rootOutput det_edep off
+/musr/command rootOutput det_edep_el off
+/musr/command rootOutput det_edep_pos off
+/musr/command rootOutput det_edep_gam off
+/musr/command rootOutput det_edep_mup off
+/musr/command rootOutput det_nsteps off
+/musr/command rootOutput det_length off
+/musr/command rootOutput det_start off
+/musr/command rootOutput det_end off
+/musr/command rootOutput det_x off
+/musr/command rootOutput det_y off
+/musr/command rootOutput det_z off
+/musr/command rootOutput det_kine off
+/musr/command rootOutput det_VrtxKine off
+/musr/command rootOutput det_VrtxX off
+/musr/command rootOutput det_VrtxY off
+/musr/command rootOutput det_VrtxZ off
+/musr/command rootOutput det_VrtxVolID off
+/musr/command rootOutput det_VrtxProcID off
+/musr/command rootOutput det_VrtxTrackID off
+/musr/command rootOutput det_VrtxParticleID off
+/musr/command rootOutput det_VvvKine off
+/musr/command rootOutput det_VvvX off
+/musr/command rootOutput det_VvvY off
+/musr/command rootOutput det_VvvZ off
+/musr/command rootOutput det_VvvVolID off
+/musr/command rootOutput det_VvvProcID off
+/musr/command rootOutput det_VvvTrackID off
+/musr/command rootOutput det_VvvParticleID off
+/musr/command rootOutput odet_ID           off
+/musr/command rootOutput nOptPhot          off
+/musr/command rootOutput odet_nPhot        off
+/musr/command rootOutput odet_timeFirst    off
+/musr/command rootOutput odet_timeA        off
+/musr/command rootOutput odet_timeB        off
+/musr/command rootOutput odet_timeC        off
+/musr/command rootOutput odet_timeD        off
+/musr/command rootOutput odet_timeE        off
+/musr/command rootOutput odet_timeMean     off
+/musr/command rootOutput odet_timeLast     off
+/musr/command rootOutput odet_timeCFD      off
+/musr/command rootOutput odet_amplCFD      off
+### Root variables that are not written out by default, but can be switched on:
+#/musr/command rootOutput fieldIntegralBx on
+#/musr/command rootOutput fieldIntegralBy on
+#/musr/command rootOutput fieldIntegralBz on
+#/musr/command rootOutput fieldIntegralBz1 on
+#/musr/command rootOutput fieldIntegralBz2 on
+#/musr/command rootOutput fieldIntegralBz3 on
+
+######################### P A R T I C L E   G U N #################################
+
+# version 1 cosmic muon by Meng Lv
+/gun/cosmic_v1 false
+
+# EcoMug setup
+/gun/ecomug/useEcoMug true
+
+# plane shape: x, y, center(x, y, z) in (mm)
+/gun/ecomug/shapeConstruct plane 5000 5000 0 0 0
+
+# sphere shape: only need the size of radius, so set the second number as 0
+#/gun/ecomug/shapeConstruct sphere 5000 0 0 0 0
+
+# cylinder shape: radius, height in (mm)
+#/gun/ecomug/shapeConstruct cylinder 3000 10000 0 0 0
+# you can specify the cosmic muon's momentum range (MeV) and angular range (degree)
+/gun/ecomug/constraints 10 10000 20 60 0 180
+
+# if using CRY or EcoMug, then don't need to set the beam's vertex and direction
+#/gun/primaryparticle mu+
+#/gun/vertex 0 0 5000 mm
+#/gun/momentum 2.15 MeV
+
+########################  B E A M    O N  #######################################
+
+/run/beamOn 100
