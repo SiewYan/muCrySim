@@ -4,13 +4,21 @@ Executable = run.sh
 Log        = logs/$(ClusterID)_$(Process)_log
 Output     = logs/$(ClusterID)_$(Process)_out
 Error      = logs/$(ClusterID)_$(Process)_err
-request_cpus = 2
-# Priority   = 15
+request_cpus = 1
+Priority   = 15
 # Rank       = (OpSysName == "CentOS")
 # Requirements = (Machine != "bl-hd-1.phy.sjtulocal") && (Machine != "bl-hd-2.phy.sjtulocal")
 Arguments=$(Mac) $(Name) $(Process)
 #queue 1
 #queue Mac, Name from layer0.txt
+#queue Mac, Name from layer1.txt
 #queue Mac, Name from layer2.txt
-queue Mac, Name from layer5.txt
+#queue Mac, Name from layer3.txt
+#queue Mac, Name from layer4.txt
+#queue Mac, Name from layer5.txt
+queue Mac, Name from layer6.txt
+
+#queue Mac, Name from layer7.txt
+#queue Mac, Name from layer8.txt
+#queue Mac, Name from layer9.txt
 

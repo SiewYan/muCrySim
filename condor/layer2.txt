@@ -1,10 +1,5 @@
-mini-tunnel_2layer.mac, layer2_run1
-mini-tunnel_2layer.mac, layer2_run2
-mini-tunnel_2layer.mac, layer2_run3
-mini-tunnel_2layer.mac, layer2_run4
-mini-tunnel_2layer.mac, layer2_run5
-mini-tunnel_2layer.mac, layer2_run6
-mini-tunnel_2layer.mac, layer2_run7
-mini-tunnel_2layer.mac, layer2_run8
-mini-tunnel_2layer.mac, layer2_run9
-mini-tunnel_2layer.mac, layer2_run10
+tun_2m.mac, 2m_01
+tun_2m.mac, 2m_02
+tun_2m.mac, 2m_03
+tun_2m.mac, 2m_04
+tun_2m.mac, 2m_05

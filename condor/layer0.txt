@@ -1,10 +1,5 @@
-mini-tunnel_0layer.mac, layer0_run1
-mini-tunnel_0layer.mac, layer0_run2
-mini-tunnel_0layer.mac, layer0_run3
-mini-tunnel_0layer.mac, layer0_run4
-mini-tunnel_0layer.mac, layer0_run5
-mini-tunnel_0layer.mac, layer0_run6
-mini-tunnel_0layer.mac, layer0_run7
-mini-tunnel_0layer.mac, layer0_run8
-mini-tunnel_0layer.mac, layer0_run9
-mini-tunnel_0layer.mac, layer0_run10
+tun_0m.mac, 0m_01
+tun_0m.mac, 0m_02
+tun_0m.mac, 0m_03
+tun_0m.mac, 0m_04
+tun_0m.mac, 0m_05

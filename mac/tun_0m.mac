@@ -24,13 +24,12 @@
 #/musr/command construct box rock5 500 500 5000 Rock 2000 0 0 log_water norot dead 905
 
 # sediment # mud thickness 1 meter
-/musr/command construct box mud_1 5000 500 500 Mud 0 0 -9500 log_water norot dead 1001
-/musr/command construct box mud_2 5000 500 500 Mud 0 0 -8500 log_water norot dead 1002
+#/musr/command construct box mud_1 5000 500 500 Mud 0 0 -9500 log_water norot dead 1001
+#/musr/command construct box mud_2 5000 500 500 Mud 0 0 -8500 log_water norot dead 1002
 #/musr/command construct box mud_3 5000 500 500 Mud 0 0 -7500 log_water norot dead 1003
 #/musr/command construct box mud_4 5000 500 500 Mud 0 0 -6500 log_water norot dead 1004
 #/musr/command construct box mud_5 5000 500 500 Mud 0 0 -5500 log_water norot dead 1005
 #/musr/command construct box mud_6 5000 500 500 Mud 0 0 -4500 log_water norot dead 1006
-
 
 # concrete 2 m
 /musr/command construct box E1 5000 500 1000 Concrete 0 0 -21000 log_World norot dead 5000
