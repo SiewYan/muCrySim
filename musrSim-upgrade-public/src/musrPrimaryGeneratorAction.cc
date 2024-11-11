@@ -778,7 +778,7 @@ void musrPrimaryGeneratorAction::swapTheAxisInTurtle(float& x_x, float& x_xprime
 
 //===============================================================================   Y. ZENG 23 Apr 2024
 void musrPrimaryGeneratorAction::UpdateCRY(std::string* MessInput){
-  CRYSetup *setup = new CRYSetup(*MessInput, "/lustre/collider/zengyonghao/muography/musrSim-upgrade/cryData");
+  CRYSetup *setup = new CRYSetup(*MessInput, "/home/shoh/Works/muography/muCrySim/musrSim-upgrade-public/cryData");
 
   cryGen = new CRYGenerator(setup);
 
@@ -809,7 +809,7 @@ void musrPrimaryGeneratorAction::CRYFromFile(G4String newValue){
       setupString.append(" ");
     }
 
-    CRYSetup *setup = new CRYSetup(setupString, "/lustre/collider/zengyonghao/muography/musrSim-upgrade/cryData");
+    CRYSetup *setup = new CRYSetup(setupString, "/home/shoh/Works/muography/muCrySim/musrSim-upgrade-public/cryData");
 
     // set random number generator
     RNGWrapper<CLHEP::HepRandomEngine>::set(CLHEP::HepRandom::getTheEngine(),&CLHEP::HepRandomEngine::flat);

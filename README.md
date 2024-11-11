@@ -4,7 +4,9 @@ muSRSim with CRY generator
 
 ## Modification
 
-addition of material is possible at ```musrSim-upgrade-public/src/musrDetectorConstruction.cc```,
+- manual modification is required to assign path to cosmic data on ```musrSim-upgrade-public/src/musrPrimaryGeneratorAction.cc``` line 781, line 812.
+
+- addition of material is possible at ```musrSim-upgrade-public/src/musrDetectorConstruction.cc```,
 existing materials:
 
 ```
