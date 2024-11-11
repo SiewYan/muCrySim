@@ -1,5 +1,22 @@
 #!/bin/bash
 
+check_path() {
+  path_to_check="$1"
+
+  # Loop through each directory in $PATH
+  IFS=':' read -ra path_array <<< "$PATH"
+  for dir in "${path_array[@]}"; do
+      if [ "$dir" == "$path_to_check" ]; then
+	  echo "Path '$path_to_check' exists in \$PATH."
+	  return 0
+      fi
+  done
+  
+  echo "adding $path_to_check to PATH"
+  export PATH=$path_to_check:/$PATH
+  return 1
+}
+
 CWD=$(pwd)
 DOMAIN=$(echo $HOSTNAME | awk -F "." '{print $NF}')
 
@@ -28,7 +45,9 @@ else
     cd build
     cmake -DCMAKE_INSTALL_PREFIX=$CWD/local  $CWD/musrSim-upgrade-public
     make -j3; make install
-
 fi
+
+# loading script
+check_path $CWD/scripts
 
 cd $CWD
