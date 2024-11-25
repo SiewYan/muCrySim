@@ -26,7 +26,7 @@ if [[ $DOMAIN == "sjtulocal" ]]; then
 else
     if ! [ -x "$(command -v geant4.sh)" ]; then
 	echo 'Error: geant4 is not installed.' >&2
-	exit 1
+	exit
     else
 	echo source geant4.sh
 	source geant4.sh

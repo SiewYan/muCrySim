@@ -1777,8 +1777,115 @@ void musrDetectorConstruction::DefineMaterials()
   mud->AddElement(Si, 0.28);
   mud->AddElement(Al, 0.10);
   mud->AddElement(Fe, 0.10);
+
+  G4Material* SteelSlag = new G4Material("SteelSlag", density = 3.2 * CLHEP::g/CLHEP::cm3, ncomponents=6);
+  SteelSlag->AddElement(Ca, 0.32);  // ~32% Calcium Oxide (CaO)
+  SteelSlag->AddElement(Si, 0.19);  // ~19% Silicon Dioxide (SiO₂)
+  SteelSlag->AddElement(Fe, 0.25);  // ~25% Iron Oxide (Fe₂O₃)
+  SteelSlag->AddElement(Al, 0.06);   // ~6% Aluminum Oxide (Al₂O₃)
+  SteelSlag->AddElement(Mg, 0.08);   // ~8% Magnesium Oxide (MgO)
+  SteelSlag->AddElement(O, 0.10);   // Remaining Oxygen
+
+  G4Material* Backfill = new G4Material("Backfill", density = 2.0 * CLHEP::g/CLHEP::cm3, ncomponents=5);
+  compactedBackfill->AddElement(Si, 0.35);  // Silica (SiO₂)
+  compactedBackfill->AddElement(O, 0.45);   // Oxygen from silicates
+  compactedBackfill->AddElement(Al, 0.10);  // Alumina (clay content)
+  compactedBackfill->AddElement(Fe, 0.05);   // Iron oxides or impurities
+  compactedBackfill->AddElement(H, 0.05);    // Moisture content
+
+  // cable material
+  G4Material* XLPE = new G4Material("XLPE", 0.92 * g / cm3, 2);
+  XLPE->AddElement(C, 2);
+  XLPE->AddElement(H, 4);
+
+  G4Material* PVC = new G4Material("PVC", 1.4 * g / cm3, 3);
+  PVC->AddElement(C, 2);
+  PVC->AddElement(H, 3);
+  PVC->AddElement(Cl, 1);
+
+  // Create the composite YJV22 material (approximate bulk density and composition)
+  G4Material* YJV22 = new G4Material("YJV22", density = 2.7 * CLHEP::g/CLHEP::cm3, ncomponents=4);
+  YJV22->AddMaterial(Cu, 0.50);  // Conductor
+  YJV22->AddMaterial(XLPE, 0.20);   // Insulation
+  YJV22->AddMaterial(PVC, 0.20);    // Sheath
+  YJV22->AddMaterial(Steel, 0.10);  // Armor
+
+  // PVC-U
+  G4Material* PVCU = new G4Material("PVCU", density = 1.4 * CLHEP::g/CLHEP::cm3, ncomponents=3);
+  PVCU->AddElement(C, 2);  // Two parts Carbon
+  PVCU->AddElement(H, 3);  // Three parts Hydrogen
+  PVCU->AddElement(Cl, 1); // One part Chlorine
+
+  // Steel
+  G4Material* Steel = new G4Material("Steel", density = 8.0 * CLHEP::g/CLHEP::cm3, ncomponents=5);
+  Steel->AddElement(Fe, 0.70);  // 70% Iron
+  Steel->AddElement(Cr, 0.18);  // 18% Chromium
+  Steel->AddElement(Ni, 0.08);  // 8% Nickel
+  Steel->AddElement(Mn, 0.02);  // 2% Manganese
+  Steel->AddElement(C, 0.02);   // 0.02% Carbon
+
+  // PE HDPE
+  G4Material* Polyethylene = new G4Material("Polyethylene", density = 0.95 * CLHEP::g/CLHEP::cm3, ncomponents=2);
+  Polyethylene->AddElement(C, 2);  // Two parts Carbon
+  Polyethylene->AddElement(H, 4); // Four parts Hydrogen
+
+  // MPP  
+  G4Material* CalciumCarbonate = new G4Material("CalciumCarbonate", density = 2.71 * CLHEP::g/CLHEP::cm3, ncomponents=3);
+  CalciumCarbonate->AddElement(Ca, 1); // One part Calcium
+  CalciumCarbonate->AddElement(C, 1);  // One part Carbon
+  CalciumCarbonate->AddElement(O, 3);  // Three parts Oxygen
+
+  G4Material* MPP = new G4Material("MPP", density = 1.5 * CLHEP::g/CLHEP::cm3, ncomponents=2);
+  MPP->AddMaterial(Polyethylene, 0.60);       // 60% Polyethylene
+  MPP->AddMaterial(CalciumCarbonate, 0.40);   // 40% Calcium Carbonate
+
+  // cable content
+  // methane
+  G4double density = 0.000656 * CLHEP::g / CLHEP::cm3; // Approx. density of methane at STP
+  G4double temperature = 273.15 * CLHEP::kelvin; // Standard temperature
+  G4double pressure = 1.0 * CLHEP::atmosphere; // Standard pressure
+  G4Material* CH4 = new G4Material("Methane", density, 2, kStateGas, temperature, pressure);
+  CH4->AddElement(C, 1);  // One carbon atom
+  CH4->AddElement(H, 4);  // Four hydrogen atoms
+
+  // LPG (Liquefied Petroleum Gas)
+  G4double densityPropane = 0.00188 * CLHEP::g / CLHEP::cm3; // Propane gas at STP
+  G4double densityButane = 0.00248 * CLHEP::g / CLHEP::cm3; // Butane gas at STP
+  G4double temperature = 273.15 * CLHEP::kelvin; // Standard temperature
+  G4double pressure = 1.0 * CLHEP::atmosphere; // Standard pressure
+
+  // Propane (C3H8)
+  G4Material* Propane = new G4Material("Propane", densityPropane, 2, kStateGas, temperature, pressure);
+  Propane->AddElement(C, 3);  // Three carbon atoms
+  Propane->AddElement(H, 8);  // Eight hydrogen atoms
   
-//
+  // Butane (C4H10)
+  G4Material* Butane = new G4Material("Butane", densityButane, 2, kStateGas, temperature, pressure);
+  Butane->AddElement(C, 4);  // Four carbon atoms
+  Butane->AddElement(H, 10); // Ten hydrogen atoms
+  
+  // Define LPG as a mixture
+  G4double densityLPG = 0.001 * CLHEP::g / CLHEP::cm3; // Approx. density of LPG (adjust as needed)
+  G4Material* LPG = new G4Material("LPG", densityLPG, 2, kStateGas, temperature, pressure);
+  LPG->AddMaterial(Propane, 0.60); // 60% Propane
+  LPG->AddMaterial(Butane, 0.40);  // 40% Butane
+
+  // intermodal container
+  G4Material* cortenSteel = new G4Material("CortenSteel", density = 7.85 * CLHEP::g / CLHEP::cm3, ncomponents=6);
+  cortenSteel->AddElement(Fe, 0.96);
+  cortenSteel->AddElement(C,  0.002);
+  cortenSteel->AddElement(Mn, 0.01);
+  cortenSteel->AddElement(Si, 0.005);
+  cortenSteel->AddElement(Cu, 0.01);
+  cortenSteel->AddElement(Cr, 0.003);
+  
+  //intermodal container flooring
+  G4Material* wood = new G4Material("Wood", density = 0.7 * CLHEP::g / CLHEP::cm3, ncomponents=3);
+  wood->AddElement(C, 0.50);
+  wood->AddElement(H, 0.06);
+  wood->AddElement(O, 0.44);
+  
+  //
 // examples of vacuum
 //
 
