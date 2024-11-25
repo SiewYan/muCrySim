@@ -1827,12 +1827,12 @@ void musrDetectorConstruction::DefineMaterials()
   PVCU->AddElement(Cl, 1); // One part Chlorine
   
   // Steel
-  //G4Material* Steel = new G4Material("Steel", density = 8.0 * CLHEP::g/CLHEP::cm3, ncomponents=5);
-  //Steel->AddElement(Fe, 0.70);  // 70% Iron
-  //Steel->AddElement(Cr, 0.18);  // 18% Chromium
-  //Steel->AddElement(Ni, 0.08);  // 8% Nickel
-  //Steel->AddElement(Mn, 0.02);  // 2% Manganese
-  //Steel->AddElement(C, 0.02);   // 0.02% Carbon
+  G4Material* Steel = new G4Material("Steel", density = 8.0 * CLHEP::g/CLHEP::cm3, ncomponents=5);
+  Steel->AddElement(Fe, 0.70);  // 70% Iron
+  Steel->AddElement(Cr, 0.18);  // 18% Chromium
+  Steel->AddElement(Ni, 0.08);  // 8% Nickel
+  Steel->AddElement(Mn, 0.02);  // 2% Manganese
+  Steel->AddElement(C, 0.02);   // 0.02% Carbon
 
   // PE HDPE
   G4Material* Polyethylene = new G4Material("Polyethylene", density = 0.95 * CLHEP::g/CLHEP::cm3, ncomponents=2);
