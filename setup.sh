@@ -49,6 +49,6 @@ fi
 
 # loading script
 check_path $CWD/scripts
-check_path $CWD/local
+check_path $CWD/local/bin
 
 cd $CWD
