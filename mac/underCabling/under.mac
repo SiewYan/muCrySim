@@ -1,0 +1,290 @@
+#-----------------------------------------------------------------------
+# Macro file cosmic muon distribution from CRY
+#-----------------------------------------------------------------------
+
+/musr/command rotation Rotz 0 1 0 90
+
+#############################  G E O M E T R Y  ###################################
+# WORLD
+/musr/command construct box World 5000 500 50000 G4_AIR 0 0 0 no_logical_volume norot dead -1
+
+# intermodal container X x Y x Z = 2.3 m x 5.9 m x 2.4 m = 2300 mm x 5900 mm x 2400 mm
+/musr/command construct box container 1150 2950 1200 G4_AIR 0 0 -1200 log_World norot dead 8000
+
+# cement floor slab layer, z = 3 cm
+/musr/command construct box cement 1150 2750 15 Concrete 0 200 785 log_container norot dead 8001
+
+# solid slag layer, z = 15 cm
+/musr/command construct box slag 1150 2750 75 SteelSlag 0 200 695 log_container norot dead 8002
+
+# back-filling layer, z = 1820 mm
+/musr/command construct box backfilling 1150 2750 910 Backfill 0 200 -290 log_container norot dead 8003
+
+# floor 2, z = 300 mm
+/musr/command construct box floor2 1150 5000 150 Concrete 0 0 -2550 log_World norot dead 8004
+
+#height between floors = 4000 mm
+
+# scintillator 1000 x 1000 x 20 mm
+/musr/command construct box save_SciDet1 500 500 10 G4_PLASTIC_SC_VINYLTOLUENE 0 0 -6560 log_World norot musr/ScintSD 101
+
+# floor 1, z = 300 mm
+/musr/command construct box floor1 1150 5000 150 Concrete 0 0 -6720 log_World norot dead 8005
+
+# 10 KV powerline
+/musr/command construct tubs PL10KV 45 46 1150 0 360 YJV22 0 -2550 644 log_backfilling Rotz dead 9000
+
+# double barrel transmission cable
+/musr/command construct tubs dbtc1 50 51 1150 0 360 PVCU 0 -2301 639 log_backfilling Rotz dead 9001
+/musr/command construct tubs dbtc2 50 51 1150 0 360 PVCU 0 -2199 639 log_backfilling Rotz dead 9002
+
+# six barrel transmission cable
+/musr/command construct tubs dbtc3 50 51 1150 0 360 PVCU 0 -1952 239 log_backfilling Rotz dead 9003
+/musr/command construct tubs dbtc4 50 51 1150 0 360 PVCU 0 -1850 239 log_backfilling Rotz dead 9004
+/musr/command construct tubs dbtc5 50 51 1150 0 360 PVCU 0 -1748 239 log_backfilling Rotz dead 9005
+/musr/command construct tubs dbtc6 50 51 1150 0 360 PVCU 0 -1952 137 log_backfilling Rotz dead 9006
+/musr/command construct tubs dbtc7 50 51 1150 0 360 PVCU 0 -1850 137 log_backfilling Rotz dead 9007
+/musr/command construct tubs dbtc8 50 51 1150 0 360 PVCU 0 -1748 137 log_backfilling Rotz dead 9008
+
+# water supply tube
+/musr/command construct tubs sDN200 100 101 1150 0 360 Steel 0 -1450 589 log_backfilling Rotz dead 9009
+#/musr/command construct tubs save_sDN200w 0 100 1150 0 360 G4_WATER 0 0 0 log_sDN200 norot musr/ScintSD 90099
+/musr/command construct tubs sDN400 200 201 1150 0 360 Steel 0 -850 89 log_backfilling Rotz dead 9010
+#/musr/command construct tubs save_sDN400w 0 200 1150 0 360 G4_WATER 0 0 0 log_sDN400 norot musr/ScintSD 90100
+
+# water discharge tube
+/musr/command construct tubs DN600 300 301 1150 0 360 Concrete 0 -150 -511 log_backfilling Rotz dead 9011
+#/musr/command construct tubs save_DN600w 0 300 1150 0 360 G4_WATER 0 0 0 log_DN600 norot musr/ScintSD 90111
+/musr/command construct tubs DN400 200 201 1150 0 360 Concrete 0 550 -211 log_backfilling Rotz dead 9012
+#/musr/command construct tubs save_DN400w 0 200 1150 0 360 G4_WATER 0 0 0 log_DN400 norot musr/ScintSD 90122
+
+# gas pipeline
+/musr/command construct tubs gDN300 150 151 1150 0 360 Polyethylene 0 1050 139 log_backfilling Rotz dead 9013
+#/musr/command construct tubs save_gDN300g 0 150 1150 0 360 LPG 0 0 0 log_gDN300 norot musr/ScintSD 90133
+/musr/command construct tubs gDN200 100 101 1150 0 360 Polyethylene 0 1450 589 log_backfilling Rotz dead 9014
+#/musr/command construct tubs save_gDN200g 0 100 1150 0 360 LPG 0 0 0 log_gDN200 norot musr/ScintSD 90144
+
+# six barrel earthing cable   ###################################
+/musr/command construct tubs ec1 75 76 1150 0 360 MPP 0 1798 214 log_backfilling Rotz dead 9015
+/musr/command construct tubs ec2 75 76 1150 0 360 MPP 0 1950 214 log_backfilling Rotz dead 9016
+/musr/command construct tubs ec3 75 76 1150 0 360 MPP 0 2102 214 log_backfilling Rotz dead 9017
+/musr/command construct tubs ec5 75 76 1150 0 360 MPP 0 1798 62 log_backfilling Rotz dead 9018
+/musr/command construct tubs ec6 75 76 1150 0 360 MPP 0 1950 62 log_backfilling Rotz dead 9019
+/musr/command construct tubs ec7 75 76 1150 0 360 MPP 0 2102 62 log_backfilling Rotz dead 9020
+
+# double barrel earthing cable
+/musr/command construct tubs ec8 75 76 1150 0 360 MPP 0 2374 614 log_backfilling Rotz dead 9021
+/musr/command construct tubs ec9 75 76 1150 0 360 MPP 0 2526 614 log_backfilling Rotz dead 9022
+
+# COLORS
+/musr/command visattributes log_World invisible
+/musr/command visattributes G4_PLASTIC_SC_VINYLTOLUENE red
+/musr/command visattributes log_floor black
+/musr/command visattributes log_PL10KV red
+/musr/command visattributes log_dbtc1 green
+/musr/command visattributes log_dbtc2 green
+/musr/command visattributes log_dbtc3 green
+/musr/command visattributes log_dbtc4 green
+/musr/command visattributes log_dbtc5 green
+/musr/command visattributes log_dbtc6 green
+/musr/command visattributes log_dbtc7 green
+/musr/command visattributes log_dbtc8 green
+/musr/command visattributes log_sDN200 blue
+/musr/command visattributes log_sDN400 blue
+/musr/command visattributes log_DN600 yellow
+/musr/command visattributes log_DN400 yellow
+/musr/command visattributes log_gDN300 magenta
+/musr/command visattributes log_gDN200 magenta
+/musr/command visattributes log_ec1 red
+/musr/command visattributes log_ec2 red
+/musr/command visattributes log_ec3 red
+/musr/command visattributes log_ec4 red
+/musr/command visattributes log_ec5 red
+/musr/command visattributes log_ec6 red
+/musr/command visattributes log_ec7 red
+/musr/command visattributes log_ec8 red
+/musr/command visattributes log_ec9 red
+/musr/command visattributes log_sDN200w lightblue
+/musr/command visattributes log_sDN400w lightblue
+/musr/command visattributes log_DN600w lightblue
+/musr/command visattributes log_DN400w lightblue
+/musr/command visattributes log_gDN200g gray
+/musr/command visattributes log_gDN300g gray
+/musr/command visattributes log_floor1 black
+/musr/command visattributes log_floor2 black
+/musr/command visattributes log_SciDet1 red
+
+#########################  P H Y S I C S      P R O C E S S E S  ##################
+
+/musr/command process addDiscreteProcess gamma G4PhotoElectricEffect
+/musr/command process addDiscreteProcess gamma G4ComptonScattering
+/musr/command process addDiscreteProcess gamma G4GammaConversion
+/musr/command process addDiscreteProcess gamma G4RayleighScattering
+/musr/command process addProcess         e-    G4eMultipleScattering    -1  1  1
+/musr/command process addProcess         e-    G4eIonisation            -1  2  2
+/musr/command process addProcess         e-    G4eBremsstrahlung        -1  3  3
+/musr/command process addProcess         e+    G4eMultipleScattering    -1  1  1
+/musr/command process addProcess         e+    G4eIonisation            -1  2  2
+/musr/command process addProcess         e+    G4eBremsstrahlung        -1  3  3
+/musr/command process addProcess         e+    G4eplusAnnihilation       0 -1  4
+/musr/command process addProcess         mu-   G4MuMultipleScattering   -1  1  1
+/musr/command process addProcess         mu-   G4MuIonisation           -1  2  2
+/musr/command process addProcess         mu-   G4MuBremsstrahlung       -1  3  3
+/musr/command process addProcess         mu-   G4MuPairProduction       -1  4  4
+/musr/command process addProcess         mu+   G4MuMultipleScattering   -1  1  1
+/musr/command process addProcess         mu+   G4MuIonisation           -1  2  2
+/musr/command process addProcess         mu+   G4MuBremsstrahlung       -1  3  3
+/musr/command process addProcess         mu+   G4MuPairProduction       -1  4  4
+
+##################  S O M E   O T H E R    P A R A M E T E R S   ##################
+
+# Set the minimum time separation between two subsequent signals in the same detector (in ns)
+/musr/command signalSeparationTime 50
+/musr/run/howOftenToPrintEvent 1000
+
+# random seed option
+/musr/run/randomOption 1
+
+# VISUALISATION
+/control/execute visVRML.mac
+
+/musr/command storeOnlyEventsWithHits false
+
+#########################   R O O T     O U T P U T  ##############################
+
+#/musr/command rootOutput runID off
+#/musr/command rootOutput eventID off
+/musr/command rootOutput weight off
+/musr/command rootOutput BFieldAtDecay off
+#/musr/command rootOutput muIniPosX off
+#/musr/command rootOutput muIniPosY off
+#/musr/command rootOutput muIniPosZ off
+#/musr/command rootOutput muIniMomX off
+#/musr/command rootOutput muIniMomY off
+#/musr/command rootOutput muIniMomZ off
+/musr/command rootOutput muIniPolX off
+/musr/command rootOutput muIniPolY off
+/musr/command rootOutput muIniPolZ off
+#/musr/command rootOutput muIniTime off
+#/musr/command rootOutput parIniPosX off
+#/musr/command rootOutput parIniPosY off
+#/musr/command rootOutput parIniPosZ off
+#/musr/command rootOutput parIniMomX off
+#/musr/command rootOutput parIniMomY off
+#/musr/command rootOutput parIniMomZ off
+#/musr/command rootOutput parIniTime off
+#/musr/command rootOutput parID off
+/musr/command rootOutput muDecayDetID off
+/musr/command rootOutput muDecayPosX off
+/musr/command rootOutput muDecayPosY off
+/musr/command rootOutput muDecayPosZ off
+/musr/command rootOutput muDecayTime off
+/musr/command rootOutput muDecayPolX off
+/musr/command rootOutput muDecayPolY off
+/musr/command rootOutput muDecayPolZ off
+/musr/command rootOutput muTargetTime off
+/musr/command rootOutput muTargetPolX off
+/musr/command rootOutput muTargetPolY off
+/musr/command rootOutput muTargetPolZ off
+/musr/command rootOutput muM0Time off
+/musr/command rootOutput muM0PolX off
+/musr/command rootOutput muM0PolY off
+/musr/command rootOutput muM0PolZ off
+/musr/command rootOutput muM1Time off
+/musr/command rootOutput muM1PolX off
+/musr/command rootOutput muM1PolY off
+/musr/command rootOutput muM1PolZ off
+/musr/command rootOutput muM2Time off
+/musr/command rootOutput muM2PolX off
+/musr/command rootOutput muM2PolY off
+/musr/command rootOutput muM2PolZ off
+/musr/command rootOutput posIniMomX off
+/musr/command rootOutput posIniMomY off
+/musr/command rootOutput posIniMomZ off
+/musr/command rootOutput fieldNomVal off
+#/musr/command rootOutput det_ID off
+#/musr/command rootOutput det_edep off
+#/musr/command rootOutput det_edep_el off
+#/musr/command rootOutput det_edep_pos off
+#/musr/command rootOutput det_edep_gam off
+#/musr/command rootOutput det_edep_mup off
+#/musr/command rootOutput det_nsteps off
+#/musr/command rootOutput det_length off
+#/musr/command rootOutput det_start off
+#/musr/command rootOutput det_end off
+#/musr/command rootOutput det_x off
+#/musr/command rootOutput det_y off
+#/musr/command rootOutput det_z off
+#/musr/command rootOutput det_kine off
+/musr/command rootOutput det_VrtxKine off
+/musr/command rootOutput det_VrtxX off
+/musr/command rootOutput det_VrtxY off
+/musr/command rootOutput det_VrtxZ off
+/musr/command rootOutput det_VrtxVolID off
+/musr/command rootOutput det_VrtxProcID off
+/musr/command rootOutput det_VrtxTrackID off
+/musr/command rootOutput det_VrtxParticleID off
+/musr/command rootOutput det_VvvKine off
+/musr/command rootOutput det_VvvX off
+/musr/command rootOutput det_VvvY off
+/musr/command rootOutput det_VvvZ off
+/musr/command rootOutput det_VvvVolID off
+/musr/command rootOutput det_VvvProcID off
+/musr/command rootOutput det_VvvTrackID off
+/musr/command rootOutput det_VvvParticleID off
+/musr/command rootOutput odet_ID           off
+/musr/command rootOutput nOptPhot          off
+/musr/command rootOutput odet_nPhot        off
+/musr/command rootOutput odet_timeFirst    off
+/musr/command rootOutput odet_timeA        off
+/musr/command rootOutput odet_timeB        off
+/musr/command rootOutput odet_timeC        off
+/musr/command rootOutput odet_timeD        off
+/musr/command rootOutput odet_timeE        off
+/musr/command rootOutput odet_timeMean     off
+/musr/command rootOutput odet_timeLast     off
+/musr/command rootOutput odet_timeCFD      off
+/musr/command rootOutput odet_amplCFD      off
+### Root variables that are not written out by default, but can be switched on:
+#/musr/command rootOutput fieldIntegralBx on
+#/musr/command rootOutput fieldIntegralBy on
+#/musr/command rootOutput fieldIntegralBz on
+#/musr/command rootOutput fieldIntegralBz1 on
+#/musr/command rootOutput fieldIntegralBz2 on
+#/musr/command rootOutput fieldIntegralBz3 on
+
+######################### P A R T I C L E   G U N #################################
+
+# version 1 cosmic muon by Meng Lv
+#/gun/cosmic_v1 false
+
+# or you can set parameters from input file
+#/gun/cry/file CRYSetup.file
+
+# if using CRY or EcoMug, then don't need to set the beam's vertex and direction
+#/gun/primaryparticle mu+
+#/gun/momentum 6000 MeV
+#/gun/vertex 0 0 10000 mm
+#/gun/vertexsigma -2500 -500 0 mm
+#/gun/direction 0 0 -1
+
+# using CRY
+# CRY setup
+/gun/cry/useCRY true
+/gun/cry/input returnMuons 1
+/gun/cry/input returnNeutrons 0
+/gun/cry/input returnProtons 0
+/gun/cry/input returnGammas 0
+/gun/cry/input returnElectrons 0
+/gun/cry/input returnPions 0
+
+# m-d-y
+/gun/cry/input date 7-1-2012
+/gun/cry/input latitude 31.0
+/gun/cry/input altitude 0 # 0 for sea-level
+/gun/cry/input subboxLength 10 # 300 m # 10
+/gun/cry/update
+
+########################  B E A M    O N  #######################################
+
+/run/beamOn 200
