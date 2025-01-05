@@ -1777,7 +1777,7 @@ void musrDetectorConstruction::DefineMaterials()
   Concrete->AddElement(Fe, 0.04);
   Concrete->AddElement(Al, 0.04);
 
-  G4Material* mud = new G4Material("Mud", density = 1.8 * CLHEP::g/CLHEP::cm3, ncomponents=5);
+  G4Material* mud = new G4Material("Mud", density = 1.665 * CLHEP::g/CLHEP::cm3, ncomponents=5);
   mud->AddElement(H, 0.02);
   mud->AddElement(O, 0.50);
   mud->AddElement(Si, 0.28);
