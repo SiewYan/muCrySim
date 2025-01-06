@@ -9,20 +9,20 @@
 # Note, shower always start at z = 0
 
 # water 2 m : half length : 2000 + 10000
-/musr/command construct box water 5000 500 10000 G4_WATER 0 0 -12000 log_World norot dead 8000
+/musr/command construct box water 15000 15000 15000 G4_WATER 0 0 -12000 log_World norot dead 8000
 
-# sea level detector below 2 meter 400 100
-/musr/command construct box save_SciDet1 5000 500 5 G4_PLASTIC_SC_VINYLTOLUENE 0 0 10000 log_water norot musr/ScintSD 100
-/musr/command construct box save_SciDet2 5000 500 5 G4_PLASTIC_SC_VINYLTOLUENE 0 0 8000 log_water norot musr/ScintSD 101
-/musr/command construct box save_SciDet3 5000 500 5 G4_PLASTIC_SC_VINYLTOLUENE 0 0 6000 log_water norot musr/ScintSD 102
-/musr/command construct box save_SciDet4 5000 500 5 G4_PLASTIC_SC_VINYLTOLUENE 0 0 4000 log_water norot musr/ScintSD 103
-/musr/command construct box save_SciDet5 5000 500 5 G4_PLASTIC_SC_VINYLTOLUENE 0 0 2000 log_water norot musr/ScintSD 104
-/musr/command construct box save_SciDet6 5000 500 5 G4_PLASTIC_SC_VINYLTOLUENE 0 0 0 log_water norot musr/ScintSD 105
-/musr/command construct box save_SciDet7 5000 500 5 G4_PLASTIC_SC_VINYLTOLUENE 0 0 -2000 log_water norot musr/ScintSD 106
-/musr/command construct box save_SciDet8 5000 500 5 G4_PLASTIC_SC_VINYLTOLUENE 0 0 -4000 log_water norot musr/ScintSD 107
-/musr/command construct box save_SciDet9 5000 500 5 G4_PLASTIC_SC_VINYLTOLUENE 0 0 -6000 log_water norot musr/ScintSD 108
-/musr/command construct box save_SciDet10 5000 500 5 G4_PLASTIC_SC_VINYLTOLUENE 0 0 -8000 log_water norot musr/ScintSD 109
-/musr/command construct box save_SciDet11 5000 500 5 G4_PLASTIC_SC_VINYLTOLUENE 0 0 -10000 log_water norot musr/ScintSD 110
+# sea level detector below 2 meter full : 500 500 ; lab : 400 100
+/musr/command construct box save_SciDet1 15000 15000 G4_PLASTIC_SC_VINYLTOLUENE 0 0 10000 log_water norot musr/ScintSD 100
+/musr/command construct box save_SciDet2 15000 15000 5 G4_PLASTIC_SC_VINYLTOLUENE 0 0 8000 log_water norot musr/ScintSD 101
+/musr/command construct box save_SciDet3 15000 15000 5 G4_PLASTIC_SC_VINYLTOLUENE 0 0 6000 log_water norot musr/ScintSD 102
+/musr/command construct box save_SciDet4 15000 15000 5 G4_PLASTIC_SC_VINYLTOLUENE 0 0 4000 log_water norot musr/ScintSD 103
+/musr/command construct box save_SciDet5 15000 15000 5 G4_PLASTIC_SC_VINYLTOLUENE 0 0 2000 log_water norot musr/ScintSD 104
+/musr/command construct box save_SciDet6 15000 15000 5 G4_PLASTIC_SC_VINYLTOLUENE 0 0 0 log_water norot musr/ScintSD 105
+/musr/command construct box save_SciDet7 15000 15000 5 G4_PLASTIC_SC_VINYLTOLUENE 0 0 -2000 log_water norot musr/ScintSD 106
+/musr/command construct box save_SciDet8 15000 15000 5 G4_PLASTIC_SC_VINYLTOLUENE 0 0 -4000 log_water norot musr/ScintSD 107
+/musr/command construct box save_SciDet9 15000 15000 5 G4_PLASTIC_SC_VINYLTOLUENE 0 0 -6000 log_water norot musr/ScintSD 108
+/musr/command construct box save_SciDet10 15000 15000 5 G4_PLASTIC_SC_VINYLTOLUENE 0 0 -8000 log_water norot musr/ScintSD 109
+/musr/command construct box save_SciDet11 15000 15000 5 G4_PLASTIC_SC_VINYLTOLUENE 0 0 -10000 log_water norot musr/ScintSD 110
 
 # COLORS
 /musr/command visattributes log_World invisible
@@ -61,7 +61,7 @@
 /musr/run/randomOption 1
 
 # VISUALISATION
-/control/execute visVRML.mac
+#/control/execute visVRML.mac
 
 /musr/command storeOnlyEventsWithHits false
 
@@ -202,5 +202,8 @@
 
 ########################  B E A M    O N  #######################################
 
+# 5 million
 #/run/beamOn 5000000
-/run/beamOn 500
+# 1 million
+/run/beamOn 1000000
+#/run/beamOn 500
