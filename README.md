@@ -10,7 +10,7 @@ cd muCrySim
 source setup.sh
 ```
 
-NOTE: there is a hardcoded line.
+NOTE: there is a hardcoded line in ```musrSim-upgrade-public/src/musrPrimaryGeneratorAction.cc```, change the directory and rerun ```source setup.sh```
 
 ## Tips
 - manual modification is required to assign path to cosmic data on ```musrSim-upgrade-public/src/musrPrimaryGeneratorAction.cc``` line 781, line 812.
