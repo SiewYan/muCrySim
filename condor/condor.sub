@@ -10,13 +10,13 @@ Priority   = 15
 # Requirements = (Machine != "bl-hd-1.phy.sjtulocal") && (Machine != "bl-hd-2.phy.sjtulocal")
 Arguments=$(Mac) $(Name) $(Process)
 #queue 1
-#queue Mac, Name from layer0.txt
-#queue Mac, Name from layer1.txt
-#queue Mac, Name from layer2.txt
-#queue Mac, Name from layer3.txt
-#queue Mac, Name from layer4.txt
+queue Mac, Name from layer0.txt
+queue Mac, Name from layer1.txt
+queue Mac, Name from layer2.txt
+queue Mac, Name from layer3.txt
+queue Mac, Name from layer4.txt
 #queue Mac, Name from layer5.txt
-queue Mac, Name from layer6.txt
+#queue Mac, Name from layer6.txt
 
 #queue Mac, Name from layer7.txt
 #queue Mac, Name from layer8.txt
