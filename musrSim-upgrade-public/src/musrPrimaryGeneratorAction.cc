@@ -41,16 +41,9 @@
 #include "musrRootOutput.hh"   //cks for storing some info in the Root output file
 #include "musrErrorMessage.hh"
 #include "EcoMug.h"   // Y. ZENG 25 Apr 2024
-#include <unistd.h>
+#include <filesystem>
 
-// Get the current working directory
-char cwd[1024];
-if (getcwd(cwd, sizeof(cwd)) == nullptr) {
-    std::cerr << "Error getting current working directory" << std::endl;
-    return -1;  // Or handle error as appropriate
-}
-
-std::string cryDataPath = std::string(cwd) + "/muCrySim/musrSim-upgrade-public/cryData";
+std::string cryDataPath = "/lustre/collider/siew/muography/muCrySim/musrSim-upgrade-public/cryData";
 
 std::unique_ptr<EcoMug> musrPrimaryGeneratorAction::fEcoMug = std::make_unique<EcoMug>();            // Y. ZENG 25 Apr 2024
 musrPrimaryGeneratorAction::SkyShape musrPrimaryGeneratorAction::fSkyShape = kPlane;                 // Y. ZENG 25 Apr 2024
