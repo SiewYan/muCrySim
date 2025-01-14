@@ -2,8 +2,17 @@
 
 muSRSim with CRY generator
 
-## Modification
+## Installation
 
+Clone the repository and do the following
+```
+cd muCrySim
+source setup.sh
+```
+
+NOTE: there is a hardcoded line.
+
+## Tips
 - manual modification is required to assign path to cosmic data on ```musrSim-upgrade-public/src/musrPrimaryGeneratorAction.cc``` line 781, line 812.
 
 - addition of material is possible at ```musrSim-upgrade-public/src/musrDetectorConstruction.cc```,
