@@ -12,6 +12,20 @@ source setup.sh
 
 NOTE: there is a hardcoded line in ```musrSim-upgrade-public/src/musrPrimaryGeneratorAction.cc```, change the directory and rerun ```source setup.sh```
 
+## workspace
+
+to create a workspace , do 
+
+```
+source mkWorkspace.sh NAME
+```
+
+sim-NAME will be created, you may work on your example in the folder ```sim-NAME```. move your favourite mac into the folder, and do
+```
+../local/bin/musrSim_upgrade MAC
+```
+
+
 ## Tips
 - manual modification is required to assign path to cosmic data on ```musrSim-upgrade-public/src/musrPrimaryGeneratorAction.cc``` line 781, line 812.
 
