@@ -9,11 +9,9 @@
 # Note, shower always start at z = 0
 
 # water 2 m : half length : 5000 (above 5m)
-
-# pmt detector
+# pmt detector # 10 cm apart
 /musr/command construct box save_SciDet1 400 100 10 G4_PLASTIC_SC_VINYLTOLUENE 0 0 -5000 log_World norot musr/ScintSD 101
 /musr/command construct box save_SciDet2 400 100 10 G4_PLASTIC_SC_VINYLTOLUENE 0 0 -5030 log_World norot musr/ScintSD 102
-
 
 # COLORS
 /musr/command visattributes log_World invisible
@@ -52,7 +50,7 @@
 /musr/run/randomOption 1
 
 # VISUALISATION
-/control/execute visVRML.mac
+#/control/execute visVRML.mac
 
 /musr/command storeOnlyEventsWithHits false
 
@@ -196,5 +194,5 @@
 # 5 million
 #/run/beamOn 5000000
 # 1 million
-#/run/beamOn 1000000
+/run/beamOn 1000000
 #/run/beamOn 100
