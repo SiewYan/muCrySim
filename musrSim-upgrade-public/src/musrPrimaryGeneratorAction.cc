@@ -41,6 +41,16 @@
 #include "musrRootOutput.hh"   //cks for storing some info in the Root output file
 #include "musrErrorMessage.hh"
 #include "EcoMug.h"   // Y. ZENG 25 Apr 2024
+#include <unistd.h>
+
+// Get the current working directory
+char cwd[1024];
+if (getcwd(cwd, sizeof(cwd)) == nullptr) {
+    std::cerr << "Error getting current working directory" << std::endl;
+    return -1;  // Or handle error as appropriate
+}
+
+std::string cryDataPath = std::string(cwd) + "/muCrySim/musrSim-upgrade-public/cryData";
 
 std::unique_ptr<EcoMug> musrPrimaryGeneratorAction::fEcoMug = std::make_unique<EcoMug>();            // Y. ZENG 25 Apr 2024
 musrPrimaryGeneratorAction::SkyShape musrPrimaryGeneratorAction::fSkyShape = kPlane;                 // Y. ZENG 25 Apr 2024
@@ -778,7 +788,7 @@ void musrPrimaryGeneratorAction::swapTheAxisInTurtle(float& x_x, float& x_xprime
 
 //===============================================================================   Y. ZENG 23 Apr 2024
 void musrPrimaryGeneratorAction::UpdateCRY(std::string* MessInput){
-  CRYSetup *setup = new CRYSetup(*MessInput, "/home/shoh/Works/muography/muCrySim/musrSim-upgrade-public/cryData");
+  CRYSetup *setup = new CRYSetup(*MessInput, cryDataPath.c_str());
 
   cryGen = new CRYGenerator(setup);
 
@@ -809,7 +819,7 @@ void musrPrimaryGeneratorAction::CRYFromFile(G4String newValue){
       setupString.append(" ");
     }
 
-    CRYSetup *setup = new CRYSetup(setupString, "/home/shoh/Works/muography/muCrySim/musrSim-upgrade-public/cryData");
+    CRYSetup *setup = new CRYSetup(setupString, cryDataPath.c_str());
 
     // set random number generator
     RNGWrapper<CLHEP::HepRandomEngine>::set(CLHEP::HepRandom::getTheEngine(),&CLHEP::HepRandomEngine::flat);
