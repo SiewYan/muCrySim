@@ -8,12 +8,12 @@
 
 # Note, shower always start at z = 0
 
-# 10 meter above : half length : 10000 + 2500
+# 10 meter above : half length : 10000 + 5000
 # each density block is 10 meter
-/musr/command construct box water 5000 5000 5000 G4_WATER -15000 15000 -15000 log_World norot dead 8000
-/musr/command construct box mud 5000 5000 5000 Mud 15000 15000 -15000 log_World norot dead 8001
-/musr/command construct box rock 5000 5000 5000 Rock -15000 -15000 -15000 log_World norot dead 8002
-/musr/command construct box concrete 5000 5000 5000 Concrete 15000 -15000 -15000 log_World norot dead 8003
+/musr/command construct box water 5000 5000 5000 G4_WATER -5000 5000 -15000 log_World norot dead 8000
+/musr/command construct box mud 5000 5000 5000 Mud 5000 5000 -15000 log_World norot dead 8001
+/musr/command construct box rock 5000 5000 5000 Rock -5000 -5000 -15000 log_World norot dead 8002
+/musr/command construct box concrete 5000 5000 5000 Concrete 5000 -5000 -15000 log_World norot dead 8003
 
 # water
 /musr/command construct box save_SciDet1 5000 5000 5 G4_PLASTIC_SC_VINYLTOLUENE 0 0 5000 log_water norot musr/ScintSD 100
@@ -87,7 +87,7 @@
 /musr/run/randomOption 1
 
 # VISUALISATION
-#/control/execute visVRML.mac
+/control/execute visVRML.mac
 
 /musr/command storeOnlyEventsWithHits false
 
@@ -231,7 +231,7 @@
 # 5 million
 #/run/beamOn 5000000
 # 1 million
-#/run/beamOn 1000000
+/run/beamOn 1000000
 # 0.2 million
-/run/beamOn 200000
+#/run/beamOn 200000
 #/run/beamOn 100
