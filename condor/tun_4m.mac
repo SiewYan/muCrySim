@@ -4,44 +4,58 @@
 
 #############################  G E O M E T R Y  ###################################
 # WORLD
-/musr/command construct box World 50000 50000 50000 G4_AIR 0 0 0 no_logical_volume norot dead -1
+/musr/command construct box World 5000 500 50000 G4_AIR 0 0 0 no_logical_volume norot dead -1
 
-# Note, shower always start at z = 0
+# sea level detector 
+/musr/command construct box save_SciDet1 500 500 5 G4_PLASTIC_SC_VINYLTOLUENE -2000 0 5 log_World norot musr/ScintSD 101
+/musr/command construct box save_SciDet2 500 500 5 G4_PLASTIC_SC_VINYLTOLUENE -1000 0 5 log_World norot musr/ScintSD 102
+/musr/command construct box save_SciDet3 500 500 5 G4_PLASTIC_SC_VINYLTOLUENE 0 0 5 log_World norot musr/ScintSD 103
+/musr/command construct box save_SciDet4 500 500 5 G4_PLASTIC_SC_VINYLTOLUENE 1000 0 5 log_World norot musr/ScintSD 104
+/musr/command construct box save_SciDet5 500 500 5 G4_PLASTIC_SC_VINYLTOLUENE 2000 0 5 log_World norot musr/ScintSD 105
 
-# water 2 m : half length : 2000 + 10000
-/musr/command construct box water 5000 500 10000 G4_WATER 0 0 -12000 log_World norot dead 8000
+# water 20 m
+/musr/command construct box water 5000 500 10000 G4_WATER 0 0 -10000 log_World norot dead 8000
 
-# sea level detector below 2 meter 400 100
-/musr/command construct box save_SciDet1 5000 500 5 G4_PLASTIC_SC_VINYLTOLUENE 0 0 10000 log_water norot musr/ScintSD 801
+# 5 rocks in the water with different thickness
+#/musr/command construct box rock1 500 500 1000 Rock -2000 0 0 log_water norot dead 901
+#/musr/command construct box rock2 500 500 2000 Rock -1000 0 0 log_water norot dead 902
+#/musr/command construct box rock3 500 500 3000 Rock 0 0 0 log_water norot dead 903
+#/musr/command construct box rock4 500 500 4000 Rock 1000 0 0 log_water norot dead 904
+#/musr/command construct box rock5 500 500 5000 Rock 2000 0 0 log_water norot dead 905
 
-#/musr/command construct box save_SciDet2 5000 500 5 G4_PLASTIC_SC_VINYLTOLUENE 0 0 8000 log_water norot musr/ScintSD 101
-#/musr/command construct box save_SciDet3 5000 500 5 G4_PLASTIC_SC_VINYLTOLUENE 0 0 6000 log_water norot musr/ScintSD 102
-#/musr/command construct box save_SciDet4 5000 500 5 G4_PLASTIC_SC_VINYLTOLUENE 0 0 4000 log_water norot musr/ScintSD 103
-#/musr/command construct box save_SciDet5 5000 500 5 G4_PLASTIC_SC_VINYLTOLUENE 0 0 2000 log_water norot musr/ScintSD 104
-#/musr/command construct box save_SciDet6 5000 500 5 G4_PLASTIC_SC_VINYLTOLUENE 0 0 0 log_water norot musr/ScintSD 105
-#/musr/command construct box save_SciDet7 5000 500 5 G4_PLASTIC_SC_VINYLTOLUENE 0 0 -2000 log_water norot musr/ScintSD 106
-#/musr/command construct box save_SciDet8 5000 500 5 G4_PLASTIC_SC_VINYLTOLUENE 0 0 -4000 log_water norot musr/ScintSD 107
-#/musr/command construct box save_SciDet9 5000 500 5 G4_PLASTIC_SC_VINYLTOLUENE 0 0 -6000 log_water norot musr/ScintSD 108
-#/musr/command construct box save_SciDet10 5000 500 5 G4_PLASTIC_SC_VINYLTOLUENE 0 0 -8000 log_water norot musr/ScintSD 109
+# sediment # mud thickness 1 meter
+/musr/command construct box mud_1 5000 500 500 Mud 0 0 -9500 log_water norot dead 1001
+/musr/command construct box mud_2 5000 500 500 Mud 0 0 -8500 log_water norot dead 1002
+/musr/command construct box mud_3 5000 500 500 Mud 0 0 -7500 log_water norot dead 1003
+/musr/command construct box mud_4 5000 500 500 Mud 0 0 -6500 log_water norot dead 1004
+#/musr/command construct box mud_5 5000 500 500 Mud 0 0 -5500 log_water norot dead 1005
+#/musr/command construct box mud_6 5000 500 500 Mud 0 0 -4500 log_water norot dead 1006
 
-#/musr/command construct box mud1 5000 500 1000 Mud 0 0  9000 log_water norot dead 8001
-#/musr/command construct box mud2 5000 500 1000 Mud 0 0  7000 log_water norot dead 8002
-#/musr/command construct box mud3 5000 500 1000 Mud 0 0  5000 log_water norot dead 8003
-#/musr/command construct box mud4 5000 500 1000 Mud 0 0  3000 log_water norot dead 8004
-#/musr/command construct box mud5 5000 500 1000 Mud 0 0  1000 log_water norot dead 8005
-#/musr/command construct box mud6 5000 500 1000 Mud 0 0 -1000 log_water norot dead 8006
-#/musr/command construct box mud7 5000 500 1000 Mud 0 0 -3000 log_water norot dead 8007
-#/musr/command construct box mud8 5000 500 1000 Mud 0 0 -5000 log_water norot dead 8008
-#/musr/command construct box mud9 5000 500 1000 Mud 0 0 -7000 log_water norot dead 8009
-/musr/command construct box mud10 5000 500 1000 Mud 0 0 -9000 log_water norot dead 8010
 
-/musr/command construct box save_SciDet2 5000 500 5 G4_PLASTIC_SC_VINYLTOLUENE 0 0 -10000 log_water norot musr/ScintSD 802
+# concrete 2 m
+/musr/command construct box E1 5000 500 1000 Concrete 0 0 -21000 log_World norot dead 5000
+
+# tunnel level detector
+/musr/command construct box save_SciDet6 500 500 5 G4_PLASTIC_SC_VINYLTOLUENE -2000 0 -30005 log_World norot musr/ScintSD 106
+/musr/command construct box save_SciDet7 500 500 5 G4_PLASTIC_SC_VINYLTOLUENE -1000 0 -30005 log_World norot musr/ScintSD 107
+/musr/command construct box save_SciDet8 500 500 5 G4_PLASTIC_SC_VINYLTOLUENE 0 0 -30005 log_World norot musr/ScintSD 108
+/musr/command construct box save_SciDet9 500 500 5 G4_PLASTIC_SC_VINYLTOLUENE 1000 0 -30005 log_World norot musr/ScintSD 109
+/musr/command construct box save_SciDet10 500 500 5 G4_PLASTIC_SC_VINYLTOLUENE 2000 0 -30005 log_World norot musr/ScintSD 110
+
+# tunnel floor 0.5 m
+#/musr/command construct box floor 5000 500 250 Concrete 0 0 -30255 log_World norot dead 1000
 
 # COLORS
 /musr/command visattributes log_World invisible
 /musr/command visattributes G4_PLASTIC_SC_VINYLTOLUENE red
 /musr/command visattributes log_water lightblue
-/musr/command visattributes log_mud black
+/musr/command visattributes log_mud1 black
+/musr/command visattributes log_mud2 black
+/musr/command visattributes log_mud3 black
+/musr/command visattributes log_mud4 black
+/musr/command visattributes log_mud5 black
+/musr/command visattributes log_E1 green
+/musr/command visattributes log_floor black
 
 #########################  P H Y S I C S      P R O C E S S E S  ##################
 
@@ -211,10 +225,9 @@
 /gun/cry/input date 7-1-2012
 /gun/cry/input latitude 31.0
 /gun/cry/input altitude 0 # 0 for sea-level
-/gun/cry/input subboxLength 15 # 300 m
+/gun/cry/input subboxLength 20 # 300 m
 /gun/cry/update
 
 ########################  B E A M    O N  #######################################
 
-/run/beamOn 1000000
-#/run/beamOn 100
+/run/beamOn 5000000
