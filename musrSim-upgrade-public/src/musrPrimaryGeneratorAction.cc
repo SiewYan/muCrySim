@@ -43,7 +43,7 @@
 #include "EcoMug.h"   // Y. ZENG 25 Apr 2024
 #include <filesystem>
 
-std::string cryDataPath = "/lustre/collider/siew/muography/muCrySim/musrSim-upgrade-public/cryData";
+std::string cryDataPath = "/home/shoh/Works/muCrySim/musrSim-upgrade-public/cryData";
 
 std::unique_ptr<EcoMug> musrPrimaryGeneratorAction::fEcoMug = std::make_unique<EcoMug>();            // Y. ZENG 25 Apr 2024
 musrPrimaryGeneratorAction::SkyShape musrPrimaryGeneratorAction::fSkyShape = kPlane;                 // Y. ZENG 25 Apr 2024
