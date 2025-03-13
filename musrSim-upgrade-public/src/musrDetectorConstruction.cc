@@ -1790,6 +1790,16 @@ void musrDetectorConstruction::DefineMaterials()
   G4Material* baseWater = nist->FindOrBuildMaterial("G4_WATER");
   G4Material* wangpuWater = new G4Material("wangpuWater", density = 1.02 * CLHEP::g/CLHEP::cm3, baseWater);
 
+  // gray mealy sand
+  G4Material* grayMealySand = new G4Material("GrayMealySand", 1.8 * CLHEP::g/CLHEP::cm3, ncomponents=6);
+  // Add elements to the material
+  grayMealySand->AddElement(Si, 0.8);  // Silicon (from SiO₂)
+  grayMealySand->AddElement(O,  0.15);  // Oxygen (from SiO₂ and other oxides)
+  grayMealySand->AddElement(Al, 0.02);   // Aluminum (from Al₂O₃)
+  grayMealySand->AddElement(Fe, 0.015);   // Iron (from Fe₂O₃)
+  grayMealySand->AddElement(Ca, 0.01);   // Calcium (from CaCO₃)
+  grayMealySand->AddElement(C,  0.005);   // Carbon (from CaCO₃)
+
   G4Material* SteelSlag = new G4Material("SteelSlag", density = 3.2 * CLHEP::g/CLHEP::cm3, ncomponents=6);
   SteelSlag->AddElement(Ca, 0.32);  // ~32% Calcium Oxide (CaO)
   SteelSlag->AddElement(Si, 0.19);  // ~19% Silicon Dioxide (SiO₂)
