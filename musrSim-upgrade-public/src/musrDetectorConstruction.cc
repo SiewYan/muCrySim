@@ -1778,7 +1778,7 @@ void musrDetectorConstruction::DefineMaterials()
   Concrete->AddElement(Al, 0.04);
 
   //G4Material* mud = new G4Material("Mud", density = 1.665 * CLHEP::g/CLHEP::cm3, ncomponents=5);
-  G4Material* mud = new G4Material("Mud", density = 1.2 * CLHEP::g/CLHEP::cm3, ncomponents=5);
+  G4Material* mud = new G4Material("Mud", density = 1.5 * CLHEP::g/CLHEP::cm3, ncomponents=5);
   mud->AddElement(H, 0.02);
   mud->AddElement(O, 0.50);
   mud->AddElement(Si, 0.28);
@@ -1788,7 +1788,7 @@ void musrDetectorConstruction::DefineMaterials()
   // water
   G4NistManager* nist = G4NistManager::Instance();
   G4Material* baseWater = nist->FindOrBuildMaterial("G4_WATER");
-  G4Material* wangpuWater = new G4Material("wangpuWater", density = 0.96 * CLHEP::g/CLHEP::cm3, baseWater);
+  G4Material* wangpuWater = new G4Material("wangpuWater", density = 1.02 * CLHEP::g/CLHEP::cm3, baseWater);
 
   G4Material* SteelSlag = new G4Material("SteelSlag", density = 3.2 * CLHEP::g/CLHEP::cm3, ncomponents=6);
   SteelSlag->AddElement(Ca, 0.32);  // ~32% Calcium Oxide (CaO)
