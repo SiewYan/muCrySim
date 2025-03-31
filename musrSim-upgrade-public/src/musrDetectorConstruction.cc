@@ -2173,6 +2173,9 @@ void musrDetectorConstruction::SetColourOfLogicalVolume(G4LogicalVolume* pLogVol
     else if (strcmp(colour,"gray"   )==0) {pLogVol->SetVisAttributes(G4Colour(0.5,0.5,0.5));}
     else if (strcmp(colour,"cyan"   )==0) {pLogVol->SetVisAttributes(G4Colour(0,1,1));}
     else if (strcmp(colour,"magenta")==0) {pLogVol->SetVisAttributes(G4Colour(1,0,1));}
+    else if (strcmp(colour,"oceanBlue")==0) {pLogVol->SetVisAttributes(G4Colour(0.0, 0.5, 0.7));}
+    else if (strcmp(colour,"riverBlue")==0) {pLogVol->SetVisAttributes(G4Colour(0.5, 0.7, 1.0));}
+    else if (strcmp(colour,"soilOrange")==0) {pLogVol->SetVisAttributes(G4Colour(0.8, 0.4, 0.2));}
     else if (strcmp(colour,"invisible" )==0) {pLogVol->SetVisAttributes(G4VisAttributes::Invisible);}
 
     else if (strcmp(colour,"blue_style")==0) {pLogVol->SetVisAttributes(G4Colour(0.80,0.83,1));}
