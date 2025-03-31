@@ -1,0 +1,563 @@
+#-----------------------------------------------------------------------
+# Macro file cosmic muon distribution from CRY
+#-----------------------------------------------------------------------
+
+#############################  G E O M E T R Y  ###################################
+# WORLD
+#/musr/command construct box World 500000 500000 500000 G4_AIR 0 0 0 no_logical_volume norot dead -1
+/musr/command construct box World 500000 500000 500000 G4_Galactic 0 0 0 no_logical_volume norot dead -1
+
+# bin 1
+/musr/command construct box mud0 10000 25000 7716 GrayMealySand -360000 0 -4636 log_World norot dead 6000
+/musr/command construct box wall0 10000 25000 1000 Concrete -360000 0 -13352 log_World norot dead 7000
+/musr/command construct box height0 10000 25000 3000 G4_AIR -360000 0 -17352 log_World norot dead 8000
+/musr/command construct box save_SciDet01 400 100 10 G4_PLASTIC_SC_VINYLTOLUENE -360000 0 -20362 log_World norot musr/ScintSD 11
+/musr/command construct box save_SciDet02 400 100 10 G4_PLASTIC_SC_VINYLTOLUENE -360000 0 -20472 log_World norot musr/ScintSD 12
+
+
+# bin 2
+/musr/command construct box mud1 10000 25000 7891 GrayMealySand -340000 0 -5261 log_World norot dead 6001
+/musr/command construct box wall1 10000 25000 1000 Concrete -340000 0 -14152 log_World norot dead 7001
+/musr/command construct box height1 10000 25000 3000 G4_AIR -340000 0 -18152 log_World norot dead 8001
+/musr/command construct box save_SciDet11 400 100 10 G4_PLASTIC_SC_VINYLTOLUENE -340000 0 -21162 log_World norot musr/ScintSD 21
+/musr/command construct box save_SciDet12 400 100 10 G4_PLASTIC_SC_VINYLTOLUENE -340000 0 -21272 log_World norot musr/ScintSD 22
+
+
+# bin 3
+/musr/command construct box water2 10000 25000 550 wangpuWater -320000 0 -550 log_World norot dead 5002
+/musr/command construct box tidal2 10000 25000 79 G4_AIR 0 0 471 log_water2 norot dead 4002
+/musr/command construct box mud2 10000 25000 6426 GrayMealySand -320000 0 -7526 log_World norot dead 6002
+/musr/command construct box wall2 10000 25000 1000 Concrete -320000 0 -14952 log_World norot dead 7002
+/musr/command construct box height2 10000 25000 3000 G4_AIR -320000 0 -18952 log_World norot dead 8002
+/musr/command construct box save_SciDet21 400 100 10 G4_PLASTIC_SC_VINYLTOLUENE -320000 0 -21962 log_World norot musr/ScintSD 31
+/musr/command construct box save_SciDet22 400 100 10 G4_PLASTIC_SC_VINYLTOLUENE -320000 0 -22072 log_World norot musr/ScintSD 32
+
+
+# bin 4
+/musr/command construct box water3 10000 25000 4400 wangpuWater -300000 0 -4400 log_World norot dead 5003
+/musr/command construct box tidal3 10000 25000 79 G4_AIR 0 0 4321 log_water3 norot dead 4003
+/musr/command construct box mud3 10000 25000 2976 GrayMealySand -300000 0 -11776 log_World norot dead 6003
+/musr/command construct box wall3 10000 25000 1000 Concrete -300000 0 -15752 log_World norot dead 7003
+/musr/command construct box height3 10000 25000 3000 G4_AIR -300000 0 -19752 log_World norot dead 8003
+/musr/command construct box save_SciDet31 400 100 10 G4_PLASTIC_SC_VINYLTOLUENE -300000 0 -22762 log_World norot musr/ScintSD 41
+/musr/command construct box save_SciDet32 400 100 10 G4_PLASTIC_SC_VINYLTOLUENE -300000 0 -22872 log_World norot musr/ScintSD 42
+
+
+# bin 5
+/musr/command construct box water4 10000 25000 7750 wangpuWater -280000 0 -7750 log_World norot dead 5004
+/musr/command construct box tidal4 10000 25000 79 G4_AIR 0 0 7671 log_water4 norot dead 4004
+/musr/command construct box mud4 10000 25000 26 GrayMealySand -280000 0 -15526 log_World norot dead 6004
+/musr/command construct box wall4 10000 25000 1000 Concrete -280000 0 -16552 log_World norot dead 7004
+/musr/command construct box height4 10000 25000 3000 G4_AIR -280000 0 -20552 log_World norot dead 8004
+/musr/command construct box save_SciDet41 400 100 10 G4_PLASTIC_SC_VINYLTOLUENE -280000 0 -23562 log_World norot musr/ScintSD 51
+/musr/command construct box save_SciDet42 400 100 10 G4_PLASTIC_SC_VINYLTOLUENE -280000 0 -23672 log_World norot musr/ScintSD 52
+
+
+# bin 6
+/musr/command construct box water5 10000 25000 7650 wangpuWater -260000 0 -7650 log_World norot dead 5005
+/musr/command construct box tidal5 10000 25000 79 G4_AIR 0 0 7571 log_water5 norot dead 4005
+/musr/command construct box mud5 10000 25000 526 GrayMealySand -260000 0 -15826 log_World norot dead 6005
+/musr/command construct box wall5 10000 25000 1000 Concrete -260000 0 -17352 log_World norot dead 7005
+/musr/command construct box height5 10000 25000 3000 G4_AIR -260000 0 -21352 log_World norot dead 8005
+/musr/command construct box save_SciDet51 400 100 10 G4_PLASTIC_SC_VINYLTOLUENE -260000 0 -24362 log_World norot musr/ScintSD 61
+/musr/command construct box save_SciDet52 400 100 10 G4_PLASTIC_SC_VINYLTOLUENE -260000 0 -24472 log_World norot musr/ScintSD 62
+
+
+# bin 7
+/musr/command construct box water6 10000 25000 8045 wangpuWater -240000 0 -8045 log_World norot dead 5006
+/musr/command construct box tidal6 10000 25000 79 G4_AIR 0 0 7966 log_water6 norot dead 4006
+/musr/command construct box mud6 10000 25000 447 GrayMealySand -240000 0 -16538 log_World norot dead 6006
+/musr/command construct box wall6 10000 25000 1000 Concrete -240000 0 -17985 log_World norot dead 7006
+/musr/command construct box height6 10000 25000 3000 G4_AIR -240000 0 -21985 log_World norot dead 8006
+/musr/command construct box save_SciDet61 400 100 10 G4_PLASTIC_SC_VINYLTOLUENE -240000 0 -24995 log_World norot musr/ScintSD 71
+/musr/command construct box save_SciDet62 400 100 10 G4_PLASTIC_SC_VINYLTOLUENE -240000 0 -25105 log_World norot musr/ScintSD 72
+
+
+# bin 8
+/musr/command construct box water7 10000 25000 7990 wangpuWater -220000 0 -7990 log_World norot dead 5007
+/musr/command construct box tidal7 10000 25000 79 G4_AIR 0 0 7911 log_water7 norot dead 4007
+/musr/command construct box mud7 10000 25000 767 GrayMealySand -220000 0 -16747 log_World norot dead 6007
+/musr/command construct box wall7 10000 25000 1000 Concrete -220000 0 -18514 log_World norot dead 7007
+/musr/command construct box height7 10000 25000 3000 G4_AIR -220000 0 -22514 log_World norot dead 8007
+/musr/command construct box save_SciDet71 400 100 10 G4_PLASTIC_SC_VINYLTOLUENE -220000 0 -25524 log_World norot musr/ScintSD 81
+/musr/command construct box save_SciDet72 400 100 10 G4_PLASTIC_SC_VINYLTOLUENE -220000 0 -25634 log_World norot musr/ScintSD 82
+
+
+# bin 9
+/musr/command construct box water8 10000 25000 7375 wangpuWater -200000 0 -7375 log_World norot dead 5008
+/musr/command construct box tidal8 10000 25000 79 G4_AIR 0 0 7296 log_water8 norot dead 4008
+/musr/command construct box mud8 10000 25000 1646 GrayMealySand -200000 0 -16396 log_World norot dead 6008
+/musr/command construct box wall8 10000 25000 1000 Concrete -200000 0 -19042 log_World norot dead 7008
+/musr/command construct box height8 10000 25000 3000 G4_AIR -200000 0 -23042 log_World norot dead 8008
+/musr/command construct box save_SciDet81 400 100 10 G4_PLASTIC_SC_VINYLTOLUENE -200000 0 -26052 log_World norot musr/ScintSD 91
+/musr/command construct box save_SciDet82 400 100 10 G4_PLASTIC_SC_VINYLTOLUENE -200000 0 -26162 log_World norot musr/ScintSD 92
+
+
+# bin 10
+/musr/command construct box water9 10000 25000 8380 wangpuWater -180000 0 -8380 log_World norot dead 5009
+/musr/command construct box tidal9 10000 25000 79 G4_AIR 0 0 8301 log_water9 norot dead 4009
+/musr/command construct box mud9 10000 25000 906 GrayMealySand -180000 0 -17666 log_World norot dead 6009
+/musr/command construct box wall9 10000 25000 1000 Concrete -180000 0 -19571 log_World norot dead 7009
+/musr/command construct box height9 10000 25000 3000 G4_AIR -180000 0 -23571 log_World norot dead 8009
+/musr/command construct box save_SciDet91 400 100 10 G4_PLASTIC_SC_VINYLTOLUENE -180000 0 -26581 log_World norot musr/ScintSD 101
+/musr/command construct box save_SciDet92 400 100 10 G4_PLASTIC_SC_VINYLTOLUENE -180000 0 -26691 log_World norot musr/ScintSD 102
+
+
+# bin 11
+/musr/command construct box water10 10000 25000 8460 wangpuWater -160000 0 -8460 log_World norot dead 5010
+/musr/command construct box tidal10 10000 25000 79 G4_AIR 0 0 8381 log_water10 norot dead 4010
+/musr/command construct box mud10 10000 25000 1090 GrayMealySand -160000 0 -18010 log_World norot dead 6010
+/musr/command construct box wall10 10000 25000 1000 Concrete -160000 0 -20100 log_World norot dead 7010
+/musr/command construct box height10 10000 25000 3000 G4_AIR -160000 0 -24100 log_World norot dead 8010
+/musr/command construct box save_SciDet101 400 100 10 G4_PLASTIC_SC_VINYLTOLUENE -160000 0 -27110 log_World norot musr/ScintSD 111
+/musr/command construct box save_SciDet102 400 100 10 G4_PLASTIC_SC_VINYLTOLUENE -160000 0 -27220 log_World norot musr/ScintSD 112
+
+
+# bin 12
+/musr/command construct box water11 10000 25000 9240 wangpuWater -140000 0 -9240 log_World norot dead 5011
+/musr/command construct box tidal11 10000 25000 79 G4_AIR 0 0 9161 log_water11 norot dead 4011
+/musr/command construct box mud11 10000 25000 434 GrayMealySand -140000 0 -18914 log_World norot dead 6011
+/musr/command construct box wall11 10000 25000 1000 Concrete -140000 0 -20348 log_World norot dead 7011
+/musr/command construct box height11 10000 25000 3000 G4_AIR -140000 0 -24348 log_World norot dead 8011
+/musr/command construct box save_SciDet111 400 100 10 G4_PLASTIC_SC_VINYLTOLUENE -140000 0 -27358 log_World norot musr/ScintSD 121
+/musr/command construct box save_SciDet112 400 100 10 G4_PLASTIC_SC_VINYLTOLUENE -140000 0 -27468 log_World norot musr/ScintSD 122
+
+
+# bin 13
+/musr/command construct box water12 10000 25000 8090 wangpuWater -120000 0 -8090 log_World norot dead 5012
+/musr/command construct box tidal12 10000 25000 79 G4_AIR 0 0 8011 log_water12 norot dead 4012
+/musr/command construct box mud12 10000 25000 1511 GrayMealySand -120000 0 -17690 log_World norot dead 6012
+/musr/command construct box wall12 10000 25000 1000 Concrete -120000 0 -20201 log_World norot dead 7012
+/musr/command construct box height12 10000 25000 3000 G4_AIR -120000 0 -24201 log_World norot dead 8012
+/musr/command construct box save_SciDet121 400 100 10 G4_PLASTIC_SC_VINYLTOLUENE -120000 0 -27211 log_World norot musr/ScintSD 131
+/musr/command construct box save_SciDet122 400 100 10 G4_PLASTIC_SC_VINYLTOLUENE -120000 0 -27321 log_World norot musr/ScintSD 132
+
+
+# bin 14
+/musr/command construct box water13 10000 25000 7225 wangpuWater -100000 0 -7225 log_World norot dead 5013
+/musr/command construct box tidal13 10000 25000 79 G4_AIR 0 0 7146 log_water13 norot dead 4013
+/musr/command construct box mud13 10000 25000 2302 GrayMealySand -100000 0 -16752 log_World norot dead 6013
+/musr/command construct box wall13 10000 25000 1000 Concrete -100000 0 -20054 log_World norot dead 7013
+/musr/command construct box height13 10000 25000 3000 G4_AIR -100000 0 -24054 log_World norot dead 8013
+/musr/command construct box save_SciDet131 400 100 10 G4_PLASTIC_SC_VINYLTOLUENE -100000 0 -27064 log_World norot musr/ScintSD 141
+/musr/command construct box save_SciDet132 400 100 10 G4_PLASTIC_SC_VINYLTOLUENE -100000 0 -27174 log_World norot musr/ScintSD 142
+
+
+# bin 15
+/musr/command construct box water14 10000 25000 6115 wangpuWater -80000 0 -6115 log_World norot dead 5014
+/musr/command construct box tidal14 10000 25000 79 G4_AIR 0 0 6036 log_water14 norot dead 4014
+/musr/command construct box mud14 10000 25000 3338 GrayMealySand -80000 0 -15568 log_World norot dead 6014
+/musr/command construct box wall14 10000 25000 1000 Concrete -80000 0 -19907 log_World norot dead 7014
+/musr/command construct box height14 10000 25000 3000 G4_AIR -80000 0 -23907 log_World norot dead 8014
+/musr/command construct box save_SciDet141 400 100 10 G4_PLASTIC_SC_VINYLTOLUENE -80000 0 -26917 log_World norot musr/ScintSD 151
+/musr/command construct box save_SciDet142 400 100 10 G4_PLASTIC_SC_VINYLTOLUENE -80000 0 -27027 log_World norot musr/ScintSD 152
+
+
+# bin 16
+/musr/command construct box water15 10000 25000 4900 wangpuWater -60000 0 -4900 log_World norot dead 5015
+/musr/command construct box tidal15 10000 25000 79 G4_AIR 0 0 4821 log_water15 norot dead 4015
+/musr/command construct box mud15 10000 25000 4480 GrayMealySand -60000 0 -14280 log_World norot dead 6015
+/musr/command construct box wall15 10000 25000 1000 Concrete -60000 0 -19760 log_World norot dead 7015
+/musr/command construct box height15 10000 25000 3000 G4_AIR -60000 0 -23760 log_World norot dead 8015
+/musr/command construct box save_SciDet151 400 100 10 G4_PLASTIC_SC_VINYLTOLUENE -60000 0 -26770 log_World norot musr/ScintSD 161
+/musr/command construct box save_SciDet152 400 100 10 G4_PLASTIC_SC_VINYLTOLUENE -60000 0 -26880 log_World norot musr/ScintSD 162
+
+
+# bin 17
+/musr/command construct box water16 10000 25000 5170 wangpuWater -40000 0 -5170 log_World norot dead 5016
+/musr/command construct box tidal16 10000 25000 79 G4_AIR 0 0 5091 log_water16 norot dead 4016
+/musr/command construct box mud16 10000 25000 4017 GrayMealySand -40000 0 -14357 log_World norot dead 6016
+/musr/command construct box wall16 10000 25000 1000 Concrete -40000 0 -19374 log_World norot dead 7016
+/musr/command construct box height16 10000 25000 3000 G4_AIR -40000 0 -23374 log_World norot dead 8016
+/musr/command construct box save_SciDet161 400 100 10 G4_PLASTIC_SC_VINYLTOLUENE -40000 0 -26384 log_World norot musr/ScintSD 171
+/musr/command construct box save_SciDet162 400 100 10 G4_PLASTIC_SC_VINYLTOLUENE -40000 0 -26494 log_World norot musr/ScintSD 172
+
+
+# bin 18
+/musr/command construct box water17 10000 25000 5215 wangpuWater -20000 0 -5215 log_World norot dead 5017
+/musr/command construct box tidal17 10000 25000 79 G4_AIR 0 0 5136 log_water17 norot dead 4017
+/musr/command construct box mud17 10000 25000 3610 GrayMealySand -20000 0 -14040 log_World norot dead 6017
+/musr/command construct box wall17 10000 25000 1000 Concrete -20000 0 -18651 log_World norot dead 7017
+/musr/command construct box height17 10000 25000 3000 G4_AIR -20000 0 -22651 log_World norot dead 8017
+/musr/command construct box save_SciDet171 400 100 10 G4_PLASTIC_SC_VINYLTOLUENE -20000 0 -25661 log_World norot musr/ScintSD 181
+/musr/command construct box save_SciDet172 400 100 10 G4_PLASTIC_SC_VINYLTOLUENE -20000 0 -25771 log_World norot musr/ScintSD 182
+
+
+# bin 19
+/musr/command construct box water18 10000 25000 4860 wangpuWater 0 0 -4860 log_World norot dead 5018
+/musr/command construct box tidal18 10000 25000 79 G4_AIR 0 0 4781 log_water18 norot dead 4018
+/musr/command construct box mud18 10000 25000 3604 GrayMealySand 0 0 -13324 log_World norot dead 6018
+/musr/command construct box wall18 10000 25000 1000 Concrete 0 0 -17928 log_World norot dead 7018
+/musr/command construct box height18 10000 25000 3000 G4_AIR 0 0 -21928 log_World norot dead 8018
+/musr/command construct box save_SciDet181 400 100 10 G4_PLASTIC_SC_VINYLTOLUENE 0 0 -24938 log_World norot musr/ScintSD 191
+/musr/command construct box save_SciDet182 400 100 10 G4_PLASTIC_SC_VINYLTOLUENE 0 0 -25048 log_World norot musr/ScintSD 192
+
+
+# bin 20
+/musr/command construct box water19 10000 25000 4290 wangpuWater 20000 0 -4290 log_World norot dead 5019
+/musr/command construct box tidal19 10000 25000 79 G4_AIR 0 0 4211 log_water19 norot dead 4019
+/musr/command construct box mud19 10000 25000 3813 GrayMealySand 20000 0 -12393 log_World norot dead 6019
+/musr/command construct box wall19 10000 25000 1000 Concrete 20000 0 -17206 log_World norot dead 7019
+/musr/command construct box height19 10000 25000 3000 G4_AIR 20000 0 -21206 log_World norot dead 8019
+/musr/command construct box save_SciDet191 400 100 10 G4_PLASTIC_SC_VINYLTOLUENE 20000 0 -24216 log_World norot musr/ScintSD 201
+/musr/command construct box save_SciDet192 400 100 10 G4_PLASTIC_SC_VINYLTOLUENE 20000 0 -24326 log_World norot musr/ScintSD 202
+
+
+# bin 21
+/musr/command construct box water20 10000 25000 1215 wangpuWater 40000 0 -1215 log_World norot dead 5020
+/musr/command construct box tidal20 10000 25000 79 G4_AIR 0 0 1136 log_water20 norot dead 4020
+/musr/command construct box mud20 10000 25000 6526 GrayMealySand 40000 0 -8956 log_World norot dead 6020
+/musr/command construct box wall20 10000 25000 1000 Concrete 40000 0 -16483 log_World norot dead 7020
+/musr/command construct box height20 10000 25000 3000 G4_AIR 40000 0 -20483 log_World norot dead 8020
+/musr/command construct box save_SciDet201 400 100 10 G4_PLASTIC_SC_VINYLTOLUENE 40000 0 -23493 log_World norot musr/ScintSD 211
+/musr/command construct box save_SciDet202 400 100 10 G4_PLASTIC_SC_VINYLTOLUENE 40000 0 -23603 log_World norot musr/ScintSD 212
+
+
+# bin 22
+/musr/command construct box water21 10000 25000 775 wangpuWater 60000 0 -775 log_World norot dead 5021
+/musr/command construct box tidal21 10000 25000 79 G4_AIR 0 0 696 log_water21 norot dead 4021
+/musr/command construct box mud21 10000 25000 6589 GrayMealySand 60000 0 -8139 log_World norot dead 6021
+/musr/command construct box wall21 10000 25000 1000 Concrete 60000 0 -15728 log_World norot dead 7021
+/musr/command construct box height21 10000 25000 3000 G4_AIR 60000 0 -19728 log_World norot dead 8021
+/musr/command construct box save_SciDet211 400 100 10 G4_PLASTIC_SC_VINYLTOLUENE 60000 0 -22738 log_World norot musr/ScintSD 221
+/musr/command construct box save_SciDet212 400 100 10 G4_PLASTIC_SC_VINYLTOLUENE 60000 0 -22848 log_World norot musr/ScintSD 222
+
+
+# bin 23
+/musr/command construct box water22 10000 25000 220 wangpuWater 80000 0 -220 log_World norot dead 5022
+/musr/command construct box tidal22 10000 25000 79 G4_AIR 0 0 141 log_water22 norot dead 4022
+/musr/command construct box mud22 10000 25000 6744 GrayMealySand 80000 0 -7184 log_World norot dead 6022
+/musr/command construct box wall22 10000 25000 1000 Concrete 80000 0 -14928 log_World norot dead 7022
+/musr/command construct box height22 10000 25000 3000 G4_AIR 80000 0 -18928 log_World norot dead 8022
+/musr/command construct box save_SciDet221 400 100 10 G4_PLASTIC_SC_VINYLTOLUENE 80000 0 -21938 log_World norot musr/ScintSD 231
+/musr/command construct box save_SciDet222 400 100 10 G4_PLASTIC_SC_VINYLTOLUENE 80000 0 -22048 log_World norot musr/ScintSD 232
+
+
+# bin 24
+/musr/command construct box mud23 10000 25000 6799 GrayMealySand 100000 0 -6329 log_World norot dead 6023
+/musr/command construct box wall23 10000 25000 1000 Concrete 100000 0 -14128 log_World norot dead 7023
+/musr/command construct box height23 10000 25000 3000 G4_AIR 100000 0 -18128 log_World norot dead 8023
+/musr/command construct box save_SciDet231 400 100 10 G4_PLASTIC_SC_VINYLTOLUENE 100000 0 -21138 log_World norot musr/ScintSD 241
+/musr/command construct box save_SciDet232 400 100 10 G4_PLASTIC_SC_VINYLTOLUENE 100000 0 -21248 log_World norot musr/ScintSD 242
+
+
+# bin 25
+/musr/command construct box mud24 10000 25000 6664 GrayMealySand 120000 0 -5664 log_World norot dead 6024
+/musr/command construct box wall24 10000 25000 1000 Concrete 120000 0 -13328 log_World norot dead 7024
+/musr/command construct box height24 10000 25000 3000 G4_AIR 120000 0 -17328 log_World norot dead 8024
+/musr/command construct box save_SciDet241 400 100 10 G4_PLASTIC_SC_VINYLTOLUENE 120000 0 -20338 log_World norot musr/ScintSD 251
+/musr/command construct box save_SciDet242 400 100 10 G4_PLASTIC_SC_VINYLTOLUENE 120000 0 -20448 log_World norot musr/ScintSD 252
+
+
+# bin 26
+/musr/command construct box mud25 10000 25000 6519 GrayMealySand 140000 0 -5009 log_World norot dead 6025
+/musr/command construct box wall25 10000 25000 1000 Concrete 140000 0 -12528 log_World norot dead 7025
+/musr/command construct box height25 10000 25000 3000 G4_AIR 140000 0 -16528 log_World norot dead 8025
+/musr/command construct box save_SciDet251 400 100 10 G4_PLASTIC_SC_VINYLTOLUENE 140000 0 -19538 log_World norot musr/ScintSD 261
+/musr/command construct box save_SciDet252 400 100 10 G4_PLASTIC_SC_VINYLTOLUENE 140000 0 -19648 log_World norot musr/ScintSD 262
+
+
+# bin 27
+/musr/command construct box mud26 10000 25000 6364 GrayMealySand 160000 0 -4364 log_World norot dead 6026
+/musr/command construct box wall26 10000 25000 1000 Concrete 160000 0 -11728 log_World norot dead 7026
+/musr/command construct box height26 10000 25000 3000 G4_AIR 160000 0 -15728 log_World norot dead 8026
+/musr/command construct box save_SciDet261 400 100 10 G4_PLASTIC_SC_VINYLTOLUENE 160000 0 -18738 log_World norot musr/ScintSD 271
+/musr/command construct box save_SciDet262 400 100 10 G4_PLASTIC_SC_VINYLTOLUENE 160000 0 -18848 log_World norot musr/ScintSD 272
+
+
+# bin 28
+/musr/command construct box mud27 10000 25000 6219 GrayMealySand 180000 0 -3709 log_World norot dead 6027
+/musr/command construct box wall27 10000 25000 1000 Concrete 180000 0 -10928 log_World norot dead 7027
+/musr/command construct box height27 10000 25000 3000 G4_AIR 180000 0 -14928 log_World norot dead 8027
+/musr/command construct box save_SciDet271 400 100 10 G4_PLASTIC_SC_VINYLTOLUENE 180000 0 -17938 log_World norot musr/ScintSD 281
+/musr/command construct box save_SciDet272 400 100 10 G4_PLASTIC_SC_VINYLTOLUENE 180000 0 -18048 log_World norot musr/ScintSD 282
+
+
+# bin 29
+/musr/command construct box mud28 10000 25000 5984 GrayMealySand 200000 0 -3144 log_World norot dead 6028
+/musr/command construct box wall28 10000 25000 1000 Concrete 200000 0 -10128 log_World norot dead 7028
+/musr/command construct box height28 10000 25000 3000 G4_AIR 200000 0 -14128 log_World norot dead 8028
+/musr/command construct box save_SciDet281 400 100 10 G4_PLASTIC_SC_VINYLTOLUENE 200000 0 -17138 log_World norot musr/ScintSD 291
+/musr/command construct box save_SciDet282 400 100 10 G4_PLASTIC_SC_VINYLTOLUENE 200000 0 -17248 log_World norot musr/ScintSD 292
+
+
+# bin 30
+/musr/command construct box mud29 10000 25000 5689 GrayMealySand 220000 0 -2639 log_World norot dead 6029
+/musr/command construct box wall29 10000 25000 1000 Concrete 220000 0 -9328 log_World norot dead 7029
+/musr/command construct box height29 10000 25000 3000 G4_AIR 220000 0 -13328 log_World norot dead 8029
+/musr/command construct box save_SciDet291 400 100 10 G4_PLASTIC_SC_VINYLTOLUENE 220000 0 -16338 log_World norot musr/ScintSD 301
+/musr/command construct box save_SciDet292 400 100 10 G4_PLASTIC_SC_VINYLTOLUENE 220000 0 -16448 log_World norot musr/ScintSD 302
+
+
+# bin 31
+/musr/command construct box mud30 10000 25000 5339 GrayMealySand 240000 0 -2189 log_World norot dead 6030
+/musr/command construct box wall30 10000 25000 1000 Concrete 240000 0 -8528 log_World norot dead 7030
+/musr/command construct box height30 10000 25000 3000 G4_AIR 240000 0 -12528 log_World norot dead 8030
+/musr/command construct box save_SciDet301 400 100 10 G4_PLASTIC_SC_VINYLTOLUENE 240000 0 -15538 log_World norot musr/ScintSD 311
+/musr/command construct box save_SciDet302 400 100 10 G4_PLASTIC_SC_VINYLTOLUENE 240000 0 -15648 log_World norot musr/ScintSD 312
+
+
+# bin 32
+/musr/command construct box mud31 10000 25000 4984 GrayMealySand 260000 0 -1744 log_World norot dead 6031
+/musr/command construct box wall31 10000 25000 1000 Concrete 260000 0 -7728 log_World norot dead 7031
+/musr/command construct box height31 10000 25000 3000 G4_AIR 260000 0 -11728 log_World norot dead 8031
+/musr/command construct box save_SciDet311 400 100 10 G4_PLASTIC_SC_VINYLTOLUENE 260000 0 -14738 log_World norot musr/ScintSD 321
+/musr/command construct box save_SciDet312 400 100 10 G4_PLASTIC_SC_VINYLTOLUENE 260000 0 -14848 log_World norot musr/ScintSD 322
+
+
+# bin 33
+/musr/command construct box mud32 10000 25000 4834 GrayMealySand 280000 0 -1094 log_World norot dead 6032
+/musr/command construct box wall32 10000 25000 1000 Concrete 280000 0 -6928 log_World norot dead 7032
+/musr/command construct box height32 10000 25000 3000 G4_AIR 280000 0 -10928 log_World norot dead 8032
+/musr/command construct box save_SciDet321 400 100 10 G4_PLASTIC_SC_VINYLTOLUENE 280000 0 -13938 log_World norot musr/ScintSD 331
+/musr/command construct box save_SciDet322 400 100 10 G4_PLASTIC_SC_VINYLTOLUENE 280000 0 -14048 log_World norot musr/ScintSD 332
+
+
+# bin 34
+/musr/command construct box mud33 10000 25000 4454 GrayMealySand 300000 0 -674 log_World norot dead 6033
+/musr/command construct box wall33 10000 25000 1000 Concrete 300000 0 -6128 log_World norot dead 7033
+/musr/command construct box height33 10000 25000 3000 G4_AIR 300000 0 -10128 log_World norot dead 8033
+/musr/command construct box save_SciDet331 400 100 10 G4_PLASTIC_SC_VINYLTOLUENE 300000 0 -13138 log_World norot musr/ScintSD 341
+/musr/command construct box save_SciDet332 400 100 10 G4_PLASTIC_SC_VINYLTOLUENE 300000 0 -13248 log_World norot musr/ScintSD 342
+
+
+# bin 35
+/musr/command construct box mud34 10000 25000 4509 GrayMealySand 320000 0 181 log_World norot dead 6034
+/musr/command construct box wall34 10000 25000 1000 Concrete 320000 0 -5328 log_World norot dead 7034
+/musr/command construct box height34 10000 25000 3000 G4_AIR 320000 0 -9328 log_World norot dead 8034
+/musr/command construct box save_SciDet341 400 100 10 G4_PLASTIC_SC_VINYLTOLUENE 320000 0 -12338 log_World norot musr/ScintSD 351
+/musr/command construct box save_SciDet342 400 100 10 G4_PLASTIC_SC_VINYLTOLUENE 320000 0 -12448 log_World norot musr/ScintSD 352
+
+
+# bin 36
+/musr/command construct box mud35 10000 25000 4119 GrayMealySand 340000 0 591 log_World norot dead 6035
+/musr/command construct box wall35 10000 25000 1000 Concrete 340000 0 -4528 log_World norot dead 7035
+/musr/command construct box height35 10000 25000 3000 G4_AIR 340000 0 -8528 log_World norot dead 8035
+/musr/command construct box save_SciDet351 400 100 10 G4_PLASTIC_SC_VINYLTOLUENE 340000 0 -11538 log_World norot musr/ScintSD 361
+/musr/command construct box save_SciDet352 400 100 10 G4_PLASTIC_SC_VINYLTOLUENE 340000 0 -11648 log_World norot musr/ScintSD 362
+
+
+# bin 37
+/musr/command construct box mud36 10000 25000 3709 GrayMealySand 360000 0 981 log_World norot dead 6036
+/musr/command construct box wall36 10000 25000 1000 Concrete 360000 0 -3728 log_World norot dead 7036
+/musr/command construct box height36 10000 25000 3000 G4_AIR 360000 0 -7728 log_World norot dead 8036
+/musr/command construct box save_SciDet361 400 100 10 G4_PLASTIC_SC_VINYLTOLUENE 360000 0 -10738 log_World norot musr/ScintSD 371
+/musr/command construct box save_SciDet362 400 100 10 G4_PLASTIC_SC_VINYLTOLUENE 360000 0 -10848 log_World norot musr/ScintSD 372
+
+
+# bin 38
+/musr/command construct box mud37 10000 25000 3725 GrayMealySand 380000 0 1625 log_World norot dead 6037
+/musr/command construct box wall37 10000 25000 1000 Concrete 380000 0 -3100 log_World norot dead 7037
+/musr/command construct box height37 10000 25000 3000 G4_AIR 380000 0 -7100 log_World norot dead 8037
+/musr/command construct box save_SciDet371 400 100 10 G4_PLASTIC_SC_VINYLTOLUENE 380000 0 -10110 log_World norot musr/ScintSD 381
+/musr/command construct box save_SciDet372 400 100 10 G4_PLASTIC_SC_VINYLTOLUENE 380000 0 -10220 log_World norot musr/ScintSD 382
+
+# COLORS
+/musr/command visattributes log_World invisible
+/musr/command visattributes G4_AIR invisible
+/musr/command visattributes wangpuWater riverBlue #fblue_style #blue_style
+/musr/command visattributes GrayMealySand soilOrange
+/musr/command visattributes Concrete gray
+/musr/command visattributes G4_PLASTIC_SC_VINYLTOLUENE red
+
+#########################  P H Y S I C S      P R O C E S S E S  ##################
+
+/musr/command process addDiscreteProcess gamma G4PhotoElectricEffect
+/musr/command process addDiscreteProcess gamma G4ComptonScattering
+/musr/command process addDiscreteProcess gamma G4GammaConversion
+/musr/command process addDiscreteProcess gamma G4RayleighScattering
+/musr/command process addProcess         e-    G4eMultipleScattering    -1  1  1
+/musr/command process addProcess         e-    G4eIonisation            -1  2  2
+/musr/command process addProcess         e-    G4eBremsstrahlung        -1  3  3
+/musr/command process addProcess         e+    G4eMultipleScattering    -1  1  1
+/musr/command process addProcess         e+    G4eIonisation            -1  2  2
+/musr/command process addProcess         e+    G4eBremsstrahlung        -1  3  3
+/musr/command process addProcess         e+    G4eplusAnnihilation       0 -1  4
+#/musr/command process addProcess         mu-   G4MuMultipleScattering   -1  1  1
+/musr/command process addProcess         mu-   G4MuIonisation           -1  2  2
+/musr/command process addProcess         mu-   G4MuBremsstrahlung       -1  3  3
+/musr/command process addProcess         mu-   G4MuPairProduction       -1  4  4
+#/musr/command process addProcess         mu+   G4MuMultipleScattering   -1  1  1
+/musr/command process addProcess         mu+   G4MuIonisation           -1  2  2
+/musr/command process addProcess         mu+   G4MuBremsstrahlung       -1  3  3
+/musr/command process addProcess         mu+   G4MuPairProduction       -1  4  4
+
+##################  S O M E   O T H E R    P A R A M E T E R S   ##################
+
+# Set the minimum time separation between two subsequent signals in the same detector (in ns)
+/musr/command signalSeparationTime 50
+/musr/run/howOftenToPrintEvent 1000
+
+# random seed option
+/musr/run/randomOption 1
+
+# VISUALISATION
+/control/execute visVRML.mac
+
+/musr/command storeOnlyEventsWithHits true
+
+#########################   R O O T     O U T P U T  ##############################
+
+#/musr/command rootOutput runID off
+#/musr/command rootOutput eventID off
+/musr/command rootOutput weight off
+/musr/command rootOutput BFieldAtDecay off
+#/musr/command rootOutput muIniPosX off
+#/musr/command rootOutput muIniPosY off
+#/musr/command rootOutput muIniPosZ off
+#/musr/command rootOutput muIniMomX off
+#/musr/command rootOutput muIniMomY off
+#/musr/command rootOutput muIniMomZ off
+/musr/command rootOutput muIniPolX off
+/musr/command rootOutput muIniPolY off
+/musr/command rootOutput muIniPolZ off
+#/musr/command rootOutput muIniTime off
+#/musr/command rootOutput parIniPosX off
+#/musr/command rootOutput parIniPosY off
+#/musr/command rootOutput parIniPosZ off
+#/musr/command rootOutput parIniMomX off
+#/musr/command rootOutput parIniMomY off
+#/musr/command rootOutput parIniMomZ off
+#/musr/command rootOutput parIniTime off
+#/musr/command rootOutput parID off
+/musr/command rootOutput muDecayDetID off
+/musr/command rootOutput muDecayPosX off
+/musr/command rootOutput muDecayPosY off
+/musr/command rootOutput muDecayPosZ off
+/musr/command rootOutput muDecayTime off
+/musr/command rootOutput muDecayPolX off
+/musr/command rootOutput muDecayPolY off
+/musr/command rootOutput muDecayPolZ off
+/musr/command rootOutput muTargetTime off
+/musr/command rootOutput muTargetPolX off
+/musr/command rootOutput muTargetPolY off
+/musr/command rootOutput muTargetPolZ off
+/musr/command rootOutput muM0Time off
+/musr/command rootOutput muM0PolX off
+/musr/command rootOutput muM0PolY off
+/musr/command rootOutput muM0PolZ off
+/musr/command rootOutput muM1Time off
+/musr/command rootOutput muM1PolX off
+/musr/command rootOutput muM1PolY off
+/musr/command rootOutput muM1PolZ off
+/musr/command rootOutput muM2Time off
+/musr/command rootOutput muM2PolX off
+/musr/command rootOutput muM2PolY off
+/musr/command rootOutput muM2PolZ off
+/musr/command rootOutput posIniMomX off
+/musr/command rootOutput posIniMomY off
+/musr/command rootOutput posIniMomZ off
+/musr/command rootOutput fieldNomVal off
+#/musr/command rootOutput det_ID off
+#/musr/command rootOutput det_edep off
+#/musr/command rootOutput det_edep_el off
+#/musr/command rootOutput det_edep_pos off
+#/musr/command rootOutput det_edep_gam off
+#/musr/command rootOutput det_edep_mup off
+#/musr/command rootOutput det_nsteps off
+#/musr/command rootOutput det_length off
+#/musr/command rootOutput det_start off
+#/musr/command rootOutput det_end off
+#/musr/command rootOutput det_x off
+#/musr/command rootOutput det_y off
+#/musr/command rootOutput det_z off
+#/musr/command rootOutput det_kine off
+/musr/command rootOutput det_VrtxKine off
+/musr/command rootOutput det_VrtxX off
+/musr/command rootOutput det_VrtxY off
+/musr/command rootOutput det_VrtxZ off
+/musr/command rootOutput det_VrtxVolID off
+/musr/command rootOutput det_VrtxProcID off
+/musr/command rootOutput det_VrtxTrackID off
+/musr/command rootOutput det_VrtxParticleID off
+/musr/command rootOutput det_VvvKine off
+/musr/command rootOutput det_VvvX off
+/musr/command rootOutput det_VvvY off
+/musr/command rootOutput det_VvvZ off
+/musr/command rootOutput det_VvvVolID off
+/musr/command rootOutput det_VvvProcID off
+/musr/command rootOutput det_VvvTrackID off
+/musr/command rootOutput det_VvvParticleID off
+/musr/command rootOutput odet_ID           off
+/musr/command rootOutput nOptPhot          off
+/musr/command rootOutput odet_nPhot        off
+/musr/command rootOutput odet_timeFirst    off
+/musr/command rootOutput odet_timeA        off
+/musr/command rootOutput odet_timeB        off
+/musr/command rootOutput odet_timeC        off
+/musr/command rootOutput odet_timeD        off
+/musr/command rootOutput odet_timeE        off
+/musr/command rootOutput odet_timeMean     off
+/musr/command rootOutput odet_timeLast     off
+/musr/command rootOutput odet_timeCFD      off
+/musr/command rootOutput odet_amplCFD      off
+### Root variables that are not written out by default, but can be switched on:
+#/musr/command rootOutput fieldIntegralBx on
+#/musr/command rootOutput fieldIntegralBy on
+#/musr/command rootOutput fieldIntegralBz on
+#/musr/command rootOutput fieldIntegralBz1 on
+#/musr/command rootOutput fieldIntegralBz2 on
+#/musr/command rootOutput fieldIntegralBz3 on
+
+######################### P A R T I C L E   G U N #################################
+
+# version 1 cosmic muon by Meng Lv
+/gun/cosmic_v1 false
+
+# or you can set parameters from input file
+#/gun/cry/file CRYSetup.file
+
+# if using CRY or EcoMug, then don't need to set the beam's vertex and direction
+#/gun/primaryparticle mu+
+#/gun/momentum 6000 MeV
+#/gun/vertex 0 0 10000 mm
+#/gun/vertexsigma -2500 -500 0 mm
+#/gun/direction 0 0 -1
+
+# using CRY
+# CRY setup
+#/gun/cry/useCRY true
+#/gun/cry/input returnMuons 1
+#/gun/cry/input returnNeutrons 0
+#/gun/cry/input returnProtons 0
+#/gun/cry/input returnGammas 0
+#/gun/cry/input returnElectrons 0
+#/gun/cry/input returnPions 0
+
+# m-d-y
+#/gun/cry/input date 7-1-2012
+#/gun/cry/input latitude 31.0
+#/gun/cry/input altitude 0 # 0 for sea-level
+#/gun/cry/input subboxLength 250 # 300 m
+#/gun/cry/update
+
+# EcoMug
+/gun/ecomug/useEcoMug true
+# plane shape: x, y, center(x, y, z) in (mm)
+#/gun/ecomug/shapeConstruct plane 800000 50000 -25000 0 15000
+/gun/ecomug/shapeConstruct plane 800000 50000 -25000 0 15000
+
+# sphere shape: only need the size of radius, so set the second number as 0
+#/gun/ecomug/shapeConstruct sphere 5000 0 0 0 0
+
+# cylinder shape: radius, height in (mm)
+#/gun/ecomug/shapeConstruct cylinder 3000 10000 0 0 0
+
+# you can specify the cosmic muon's momentum range (MeV) and angular range (degree)
+#/gun/ecomug/constraints 10 10000 20 60 0 180
+#/gun/ecomug/constraints 10 10000 -70 70 -70 70
+#/gun/ecomug/constraints 10 10000 -30 30 0 360
+/gun/ecomug/constraints 4000 1000000 0 90 0 360
+
+########################  B E A M    O N  #######################################
+
+# 5 million
+#/run/beamOn 5000000
+# 1 million
+#/run/beamOn 1000000
+# 500k
+#/run/beamOn 500000
+# 425k
+#/run/beamOn 425000
+# 2300k
+#/run/beamOn 500000

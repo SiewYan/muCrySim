@@ -1,0 +1,13 @@
+# Multiple variables defined from a list: queue [<int expr>] [<list of varnames>] from [slice] <file name> | <list of items>
+Universe   = vanilla
+Executable = run.sh
+Log        = logs/$(ClusterID)_$(Process)_log
+Output     = logs/$(ClusterID)_$(Process)_out
+Error      = logs/$(ClusterID)_$(Process)_err
+request_cpus = 1
+Priority   = 15
+# Rank       = (OpSysName == "CentOS")
+# Requirements = (Machine != "bl-hd-1.phy.sjtulocal") && (Machine != "bl-hd-2.phy.sjtulocal")
+Arguments=$(Mac) $(Name) $(Process)
+#queue 1
+queue Mac, Name from ecomug.txt
