@@ -1777,12 +1777,34 @@ void musrDetectorConstruction::DefineMaterials()
   Concrete->AddElement(Fe, 0.04);
   Concrete->AddElement(Al, 0.04);
 
-  G4Material* mud = new G4Material("Mud", density = 1.665 * CLHEP::g/CLHEP::cm3, ncomponents=5);
+  //G4Material* mud = new G4Material("Mud", density = 1.665 * CLHEP::g/CLHEP::cm3, ncomponents=5);
+  G4Material* mud = new G4Material("Mud", density = 1.5 * CLHEP::g/CLHEP::cm3, ncomponents=5);
   mud->AddElement(H, 0.02);
   mud->AddElement(O, 0.50);
   mud->AddElement(Si, 0.28);
   mud->AddElement(Al, 0.10);
   mud->AddElement(Fe, 0.10);
+
+  // water
+  G4NistManager* nist = G4NistManager::Instance();
+  G4Material* baseWater = nist->FindOrBuildMaterial("G4_WATER");
+  G4Material* wangpuWater = new G4Material("wangpuWater", density = 1.02 * CLHEP::g/CLHEP::cm3, baseWater);
+
+  // acrylic
+  G4Material* Acrylic = new G4Material("Acrylic", density = 1.18 * CLHEP::g/CLHEP::cm3, ncomponents=3); // C_5H_8O_2
+  Acrylic->AddElement(C, 0.6);
+  Acrylic->AddElement(H, 0.08);
+  Acrylic->AddElement(O, 0.32);
+
+  // gray mealy sand
+  G4Material* grayMealySand = new G4Material("GrayMealySand", 1.8 * CLHEP::g/CLHEP::cm3, ncomponents=6);
+  // Add elements to the material
+  grayMealySand->AddElement(Si, 0.8);  // Silicon (from SiO₂)
+  grayMealySand->AddElement(O,  0.15);  // Oxygen (from SiO₂ and other oxides)
+  grayMealySand->AddElement(Al, 0.02);   // Aluminum (from Al₂O₃)
+  grayMealySand->AddElement(Fe, 0.015);   // Iron (from Fe₂O₃)
+  grayMealySand->AddElement(Ca, 0.01);   // Calcium (from CaCO₃)
+  grayMealySand->AddElement(C,  0.005);   // Carbon (from CaCO₃)
 
   G4Material* SteelSlag = new G4Material("SteelSlag", density = 3.2 * CLHEP::g/CLHEP::cm3, ncomponents=6);
   SteelSlag->AddElement(Ca, 0.32);  // ~32% Calcium Oxide (CaO)
@@ -2157,6 +2179,9 @@ void musrDetectorConstruction::SetColourOfLogicalVolume(G4LogicalVolume* pLogVol
     else if (strcmp(colour,"gray"   )==0) {pLogVol->SetVisAttributes(G4Colour(0.5,0.5,0.5));}
     else if (strcmp(colour,"cyan"   )==0) {pLogVol->SetVisAttributes(G4Colour(0,1,1));}
     else if (strcmp(colour,"magenta")==0) {pLogVol->SetVisAttributes(G4Colour(1,0,1));}
+    else if (strcmp(colour,"oceanBlue")==0) {pLogVol->SetVisAttributes(G4Colour(0.0, 0.5, 0.7));}
+    else if (strcmp(colour,"riverBlue")==0) {pLogVol->SetVisAttributes(G4Colour(0.5, 0.7, 1.0));}
+    else if (strcmp(colour,"soilOrange")==0) {pLogVol->SetVisAttributes(G4Colour(0.8, 0.4, 0.2));}
     else if (strcmp(colour,"invisible" )==0) {pLogVol->SetVisAttributes(G4VisAttributes::Invisible);}
 
     else if (strcmp(colour,"blue_style")==0) {pLogVol->SetVisAttributes(G4Colour(0.80,0.83,1));}
