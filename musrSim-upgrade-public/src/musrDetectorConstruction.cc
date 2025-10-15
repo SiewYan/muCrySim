@@ -1790,6 +1790,12 @@ void musrDetectorConstruction::DefineMaterials()
   G4Material* baseWater = nist->FindOrBuildMaterial("G4_WATER");
   G4Material* wangpuWater = new G4Material("wangpuWater", density = 1.02 * CLHEP::g/CLHEP::cm3, baseWater);
 
+  // acrylic
+  G4Material* Acrylic = new G4Material("Acrylic", density = 1.18 * CLHEP::g/CLHEP::cm3, ncomponents=3); // C_5H_8O_2
+  Acrylic->AddElement(C, 0.6);
+  Acrylic->AddElement(H, 0.08);
+  Acrylic->AddElement(O, 0.32);
+
   // gray mealy sand
   G4Material* grayMealySand = new G4Material("GrayMealySand", 1.8 * CLHEP::g/CLHEP::cm3, ncomponents=6);
   // Add elements to the material
