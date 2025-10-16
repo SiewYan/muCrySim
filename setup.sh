@@ -38,12 +38,12 @@ cd $CWD/musrSim-upgrade-public
 if [[ ! -e "build" ]];
 then
     mkdir build; cd build
-    cmake -DCMAKE_INSTALL_PREFIX=$CWD/local  $CWD/musrSim-upgrade-public
+    cmake -DCMAKE_INSTALL_PREFIX=$CWD/local -DCMAKE_POLICY_VERSION_MINIMUM=3.5 $CWD/musrSim-upgrade-public
     make -j6; make install
 else
     echo Refresh installation.
     cd build
-    cmake -DCMAKE_INSTALL_PREFIX=$CWD/local  $CWD/musrSim-upgrade-public
+    cmake -DCMAKE_INSTALL_PREFIX=$CWD/local -DCMAKE_POLICY_VERSION_MINIMUM=3.5 $CWD/musrSim-upgrade-public
     make -j3; make install
 fi
 
