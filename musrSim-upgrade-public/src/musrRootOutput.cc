@@ -223,16 +223,16 @@ void musrRootOutput::BeginOfRunAction() {
     char RootOutputFileName[200];
     //  sprintf(RootOutputFileName, "data/musr_%i.root", tmpRunNr);
     if(run_name!="") {
-        sprintf(RootOutputFileName, "%s/musrSim_jp%03d_%s.root",rootOutputDirectoryName,tmpRunNr,run_name.c_str());
+      snprintf(RootOutputFileName, sizeof(RootOutputFileName),"%s/musrSim_jp%03d_%s.root",rootOutputDirectoryName,tmpRunNr,run_name.c_str());
     }
     else {
-        sprintf(RootOutputFileName, "%s/musrSim_jp%03d.root",rootOutputDirectoryName,tmpRunNr);
+      snprintf(RootOutputFileName, sizeof(RootOutputFileName),"%s/musrSim_jp%03d.root",rootOutputDirectoryName,tmpRunNr);
     }
 
     rootFile=new TFile(RootOutputFileName,"recreate");
     if (rootFile->IsZombie()) {
         char message[200];
-        sprintf(message,"musrRootOutput::BeginOfRunAction() Root output file %s can not be created",RootOutputFileName);
+        snprintf(message,sizeof(message),"musrRootOutput::BeginOfRunAction() Root output file %s can not be created",RootOutputFileName);
         musrErrorMessage::GetInstance()->musrError(FATAL,message,false);
     }
     rootTree=new TTree("t1","a simple Tree with simple variables");
@@ -609,7 +609,7 @@ void musrRootOutput::SetVolumeIDMapping(std::string logivol, int volumeID) {
     //  rather than with strings.
     if (SensDetectorMapping[logivol]) {
         char message[200];
-        sprintf(message,"musrRootOutput::SetVolumeIDMapping: Sensitive volume %s already assigned",logivol.c_str());
+        snprintf(message,sizeof(message),"musrRootOutput::SetVolumeIDMapping: Sensitive volume %s already assigned",logivol.c_str());
         musrErrorMessage::GetInstance()->musrError(FATAL,message,false);
     }
     else{
@@ -623,7 +623,7 @@ G4int musrRootOutput::ConvertVolumeToID(std::string logivol) {
     G4int volumeID = SensDetectorMapping[logivol];
     if (volumeID==0) {
         char message[200];
-        sprintf(message,"musrRootOutput::ConvertVolumeToID: No ID number assigned to sensitive volume %s .",logivol.c_str());
+        snprintf(message,sizeof(message),"musrRootOutput::ConvertVolumeToID: No ID number assigned to sensitive volume %s .",logivol.c_str());
         musrErrorMessage::GetInstance()->musrError(SERIOUS,message,true);
     }
     return volumeID;
@@ -636,7 +636,7 @@ G4int musrRootOutput::ConvertProcessToID(std::string processName) {
     G4int processID = ProcessIDMapping[processName];
     if (processID==0) {
         char message[200];
-        sprintf(message,"musrRootOutput::ConvertProcessToID: No ID number assigned to the process \"%s\" .",processName.c_str());
+        snprintf(message,sizeof(message),"musrRootOutput::ConvertProcessToID: No ID number assigned to the process \"%s\" .",processName.c_str());
         musrErrorMessage::GetInstance()->musrError(WARNING,message,true);
     }
     return processID;
@@ -649,7 +649,7 @@ void musrRootOutput::SetSaveDetectorInfo (G4int ID, G4int particleID, G4double k
                                           G4double px, G4double py, G4double pz, G4double polx, G4double poly, G4double polz) {
     if (save_n>=save_nMax) {
         char message[200];
-        sprintf(message,"musrRootOutput.cc::SetSaveDetectorInfo(): more \"save\" hits then allowed: save_nMax=%i",save_nMax);
+        snprintf(message,sizeof(message),"musrRootOutput.cc::SetSaveDetectorInfo(): more \"save\" hits then allowed: save_nMax=%i",save_nMax);
         musrErrorMessage::GetInstance()->musrError(SERIOUS,message,true);
     }
     else {
@@ -678,7 +678,8 @@ void musrRootOutput::SetFieldNomVal(G4int i, G4double value) {
     }
     else {
         char message[200];
-        sprintf(message,
+        snprintf(message,
+		 sizeof(message),
                 "musrRootOutput.cc::SetFieldNomVal(): more electromagnetic fields then allowed: maxNFieldnNominalValues=%i",
                 maxNFieldnNominalValues);
         musrErrorMessage::GetInstance()->musrError(SERIOUS,message,true);
@@ -696,7 +697,7 @@ void musrRootOutput::SetDetectorInfo (G4int nDetectors, G4int ID, G4int particle
 {
     if ((nDetectors<0)||(nDetectors>=(det_nMax-1))) {
         char message[200];
-        sprintf(message,"musrRootOutput.cc::SetDetectorInfo: nDetectors %i is larger than det_nMax = %i",nDetectors,det_nMax);
+        snprintf(message,sizeof(message),"musrRootOutput.cc::SetDetectorInfo: nDetectors %i is larger than det_nMax = %i",nDetectors,det_nMax);
         musrErrorMessage::GetInstance()->musrError(SERIOUS,message,false);
         return;
     }
@@ -742,7 +743,7 @@ void musrRootOutput::SetDetectorInfoVvv (G4int nDetectors,
                                          G4int idVolVertex, G4int idProcVertex, G4int idTrackVertex, G4int particleID)   {
     if ((nDetectors<0)||(nDetectors>=(det_nMax-1))) {
         char message[200];
-        sprintf(message,"musrRootOutput.cc::SetDetectorInfoVvv: nDetectors %i is larger than det_nMax = %i",nDetectors,det_nMax);
+        snprintf(message,sizeof(message),"musrRootOutput.cc::SetDetectorInfoVvv: nDetectors %i is larger than det_nMax = %i",nDetectors,det_nMax);
         musrErrorMessage::GetInstance()->musrError(SERIOUS,message,false);
         return;
     }
@@ -765,7 +766,7 @@ void musrRootOutput::SetOPSAinfo    (G4int nDetectors, G4int ID, G4int nPhot, G4
 {
     if ((nDetectors<0)||(nDetectors>=(odet_nMax-1))) {
         char message[200];
-        sprintf(message,"musrRootOutput.cc::SetOPSAInfo: nDetectors %i is larger than det_nMax = %i",nDetectors,det_nMax);
+        snprintf(message,sizeof(message),"musrRootOutput.cc::SetOPSAInfo: nDetectors %i is larger than det_nMax = %i",nDetectors,det_nMax);
         musrErrorMessage::GetInstance()->musrError(SERIOUS,message,false);
         return;
     }
@@ -907,7 +908,7 @@ void musrRootOutput::SetTimeC1SpecialInfo (G4double* time) {
 void musrRootOutput::setRootOutputDirectoryName(char dirName[1000]) {
     strcpy(rootOutputDirectoryName,dirName);
     char message[200];
-    sprintf(message,"musrRootOutput.cc::setRootOutputDirectoryName: Root output file will be stored in directory %s",dirName);
+    snprintf(message,sizeof(message),"musrRootOutput.cc::setRootOutputDirectoryName: Root output file will be stored in directory %s",dirName);
     musrErrorMessage::GetInstance()->musrError(INFO,message,false);
 }
 
@@ -921,7 +922,7 @@ void musrRootOutput::SetPhotDetTime(G4double time) {
     else {
         nOptPhotDet++; // still want to know how many in total (JSL)
         char message[200];
-        sprintf(message,"musrRootOutput.cc::SetPhotDetTime: number of individual photons larger than maxNOptPhotDet (=%d)",maxNOptPhotDet);
+        snprintf(message,sizeof(message),"musrRootOutput.cc::SetPhotDetTime: number of individual photons larger than maxNOptPhotDet (=%d)",maxNOptPhotDet);
         musrErrorMessage::GetInstance()->musrError(WARNING,message,true); // had silent=false and printed all messages (JSL)
     }
 }

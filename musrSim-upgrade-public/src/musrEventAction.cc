@@ -117,7 +117,7 @@ void musrEventAction::EndOfEventAction(const G4Event* evt)  {
   if ((time(0)-timeOfRunStart)>maximumRunTimeAllowed) {
     // Stop the execution of the run - the run took already too long time
     char eMessage[200];
-    sprintf(eMessage,"musrEventAction::EndOfEventAction(): Run execution exceeded the allowed maximum time (maximum = %f sec) ==> RUN STOPPED",maximumRunTimeAllowed);
+    snprintf(eMessage,sizeof(eMessage),"musrEventAction::EndOfEventAction(): Run execution exceeded the allowed maximum time (maximum = %f sec) ==> RUN STOPPED",maximumRunTimeAllowed);
     musrErrorMessage::GetInstance()->musrError(WARNING,eMessage,false);
     G4RunManager* fRunManager = G4RunManager::GetRunManager();
     fRunManager->AbortRun(true);
@@ -129,7 +129,7 @@ void musrEventAction::EndOfEventAction(const G4Event* evt)  {
     // Stop the execution of the run - the file "RUNNUMBER.stop" was found
     remove((musrParameters::myStopFileName).c_str());
     char eMessage[200];
-    sprintf(eMessage,"musrEventAction::EndOfEventAction(): Request to stop the run was found (%s) ==> RUN STOPPED",musrParameters::myStopFileName.c_str());
+    snprintf(eMessage,sizeof(eMessage),"musrEventAction::EndOfEventAction(): Request to stop the run was found (%s) ==> RUN STOPPED",musrParameters::myStopFileName.c_str());
     musrErrorMessage::GetInstance()->musrError(WARNING,eMessage,false);
     G4RunManager* fRunManager = G4RunManager::GetRunManager();
     fRunManager->AbortRun(true);

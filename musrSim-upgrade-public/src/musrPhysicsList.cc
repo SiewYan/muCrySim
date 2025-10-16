@@ -290,7 +290,7 @@ void musrPhysicsList::ConstructEM()
   char charSteeringFileName[1000]; strcpy(charSteeringFileName,(musrParameters::mySteeringFileName).c_str());
   FILE *fSteeringFile=fopen(charSteeringFileName,"r");
   if (fSteeringFile==NULL) {
-    sprintf(eMessage,"musrPhysicsList::ConstructEM():  Failed to open macro file \"%s\" .",charSteeringFileName);
+    snprintf(eMessage,sizeof(eMessage),"musrPhysicsList::ConstructEM():  Failed to open macro file \"%s\" .",charSteeringFileName);
                      musrErrorMessage::GetInstance()->musrError(FATAL,eMessage,false);
   }
   else {G4cout<<"musrPhysicsList: The Physics processes are being defined:"<<G4endl;}
@@ -320,7 +320,7 @@ void musrPhysicsList::ConstructEM()
 						       "musrPhysicsList: Ignoring optical photon process definition because G4OpticalPhotons in *.mac file is set to false",false);
 	    continue;
 	  }
-	  sprintf(eMessage,"musrPhysicsList:  Partile \"%s\" not found in G4ParticleTable when trying to find or assign process  \"%s\".",
+	  snprintf(eMessage,sizeof(eMessage),"musrPhysicsList:  Partile \"%s\" not found in G4ParticleTable when trying to find or assign process  \"%s\".",
 		  charParticleName,charProcessName);
 	  musrErrorMessage::GetInstance()->musrError(FATAL,eMessage,false);
 	}
@@ -354,7 +354,7 @@ void musrPhysicsList::ConstructEM()
 					pManager->AddDiscreteProcess(myCerenkov); // added JSL
 	  }
 	  else {
-	    sprintf(eMessage,"musrPhysicsList:  Process \"%s\" is not implemented in musrPhysicsList.cc for addDiscreteProcess.  It can be easily added.",
+	    snprintf(eMessage,sizeof(eMessage),"musrPhysicsList:  Process \"%s\" is not implemented in musrPhysicsList.cc for addDiscreteProcess.  It can be easily added.",
 		    charProcessName);
 	    musrErrorMessage::GetInstance()->musrError(FATAL,eMessage,false);
 	  }
@@ -437,7 +437,7 @@ void musrPhysicsList::ConstructEM()
 	  //	    pManager->AddProcess(multScat,nr1,nr2,nr3);
 	  //	  }
 	  else {
-	    sprintf(eMessage,"musrPhysicsList:  Process \"%s\" is not implemented in musrPhysicsList.cc for addProcess.  It can be easily added.",
+	    snprintf(eMessage,sizeof(eMessage),"musrPhysicsList:  Process \"%s\" is not implemented in musrPhysicsList.cc for addProcess.  It can be easily added.",
 		    charProcessName);
 	    musrErrorMessage::GetInstance()->musrError(FATAL,eMessage,false);
 	  }
@@ -474,7 +474,7 @@ void musrPhysicsList::ConstructEM()
 //	    mmm->AddEmModel(modelPriority, new G4UrbanMscModel93());
 //	  }
 	  else {
-	    sprintf(eMessage,"musrPhysicsList:  Model \"%s\" is not implemented for \"%s\" in musrPhysicsList.cc for addModel.  It can be easily added.",
+	    snprintf(eMessage,sizeof(eMessage),"musrPhysicsList:  Model \"%s\" is not implemented for \"%s\" in musrPhysicsList.cc for addModel.  It can be easily added.",
 		    charModelName,charProcessName);
 	    musrErrorMessage::GetInstance()->musrError(FATAL,eMessage,false);
 	  }

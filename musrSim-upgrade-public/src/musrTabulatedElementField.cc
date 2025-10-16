@@ -240,7 +240,7 @@ musrTabulatedElementField::musrTabulatedElementField( const char* filename, cons
     G4cout << "      Field map length unit          = " << lenUnit << G4endl;
     if ((nx<2)||(nz<2)) {
       char eMessage[200];
-      sprintf(eMessage,"musrTabulatedElementField(): Strange Field table!  nx=%i, nz=%i",nx,nz);
+      snprintf(eMessage,sizeof(eMessage),"musrTabulatedElementField(): Strange Field table!  nx=%i, nz=%i",nx,nz);
       musrErrorMessage::GetInstance()->musrError(WARNING,eMessage,false);
     }
     // Set up storage space for the table

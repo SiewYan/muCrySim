@@ -120,7 +120,7 @@ void meyer::GFunctions(double* g1,double* g2, double tau)
 	  std::cout<<"  Fehler bei Berechnung der g-Funktionen fuer Winkelaufstreuung:"<<std::endl;
 	  std::cout<<"  aktuelles tau ist groesser als groesster Tabellenwert:"<<std::endl;
 	  std::cout<<"  tau      = "<< tau <<std::endl;
-	  std::cout<<"  tau_[26] = "<< tau_[26] <<std::endl;
+	  std::cout<<"  tau_[25] = "<< tau_[25] <<std::endl;
 	  break;
 	}
     }while(tau>tau_[i]);
@@ -975,8 +975,8 @@ void meyer:: F_Functions_Meyer( double tau,double thetaSchlange,double *f1,doubl
 #endif
   
     
-  *f1 = weightCol*f1_[1] + (1.-weightCol)*f1_[2];
-  *f2 = weightCol*f2_[1] + (1.-weightCol)*f2_[2];
+  *f1 = weightCol*f1_[0] + (1.-weightCol)*f1_[1];
+  *f2 = weightCol*f2_[0] + (1.-weightCol)*f2_[1];
   
 }
  

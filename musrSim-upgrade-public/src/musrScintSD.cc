@@ -306,7 +306,7 @@ void musrScintSD::ProcessOpticalPhoton(G4Step* aStep) {
 
         if (boundaryStatus!=Detection) {
             char message[200];
-            sprintf(message,"musrScintSD.cc::ProcessOpticalPhoton(): Optical photon boundary status is not Detection but %i",boundaryStatus);
+            snprintf(message,sizeof(message),"musrScintSD.cc::ProcessOpticalPhoton(): Optical photon boundary status is not Detection but %i",boundaryStatus);
             //      musrErrorMessage::GetInstance()->musrError(FATAL,message,false);
             musrErrorMessage::GetInstance()->musrError(WARNING,message,true);
         }
@@ -449,7 +449,7 @@ void musrScintSD::EndOfEvent(G4HCofThisEvent*) {
                         det_z_mun[j]               = aHit->GetPrePos().z();
                     }  else {
                         char message[200];
-                        sprintf(message,"musrScintSD.cc::EndOfEvent(): untreated particle \"%s\" deposited energy.",aParticleName.c_str());
+                        snprintf(message,sizeof(message),"musrScintSD.cc::EndOfEvent(): untreated particle \"%s\" deposited energy.",aParticleName.c_str());
                         musrErrorMessage::GetInstance()->musrError(WARNING,message,true);
                     }
                     // Check whether the signals consits of more then just one hit,  in which case make the track ID negative:
@@ -469,7 +469,7 @@ void musrScintSD::EndOfEvent(G4HCofThisEvent*) {
                 // Check, whether the maximum number of signals was not exceeded:
                 if ( nSignals >= (det_IDmax-1) ) {
                     char message[200];
-                    sprintf(message,"musrScintSD.cc::EndOfEvent(): number of signals exceeds maximal allowed value.");
+                    snprintf(message,sizeof(message),"musrScintSD.cc::EndOfEvent(): number of signals exceeds maximal allowed value.");
                     musrErrorMessage::GetInstance()->musrError(SERIOUS,message,true);
                 }
                 else {
@@ -514,7 +514,7 @@ void musrScintSD::EndOfEvent(G4HCofThisEvent*) {
                         det_z_mun[nSignals]               = aHit->GetPrePos().z();
                     }  else {
                         char message[200];
-                        sprintf(message,"musrScintSD.cc::EndOfEvent(): UNTREATED PARTICLE \"%s\" deposited energy.",aParticleName.c_str());
+                        snprintf(message,sizeof(message),"musrScintSD.cc::EndOfEvent(): UNTREATED PARTICLE \"%s\" deposited energy.",aParticleName.c_str());
                         musrErrorMessage::GetInstance()->musrError(WARNING,message,true);
                     }
                     G4ThreeVector prePos = aHit->GetPrePos();
@@ -718,42 +718,42 @@ void musrScintSD::EndOfEvent_OptiacalPhotons() {
                     // Define OPSA histograms if required for this event
                     if ((boolStoreThisOPSAhist)||(bool_pulseShapeExists)) {
                         iHistNr++;
-                        char nameHist[200];  sprintf(nameHist,"OPSAhist_%d_%d_%d",eeeventID,OPSA_detID,iHistNr);
-                        char nameHistTitle[200]; sprintf(nameHistTitle,"OPSAhist_%d_%d_%d;time (ns);Nr of photons",eeeventID,OPSA_detID,iHistNr);
+                        char nameHist[200];  snprintf(nameHist,sizeof(nameHist),"OPSAhist_%d_%d_%d",eeeventID,OPSA_detID,iHistNr);
+                        char nameHistTitle[200]; snprintf(nameHistTitle,sizeof(nameHistTitle),"OPSAhist_%d_%d_%d;time (ns);Nr of photons",eeeventID,OPSA_detID,iHistNr);
                         if (verboseLevel>1) G4cout<<"VERBOSE 2 : creating a new TH1D for OPSAhisto" <<"\n";
                         OPSAhisto = new TH1D(nameHist, nameHistTitle, OPSAhistoNbin, OPSAhistoMin, OPSAhistoMax);
                         //	    poiss = new TF1("poiss",poissonf,0.,.5,2); // x in [0;300], 2
                         //	    poiss->SetParameter(0,1);
                         //	    poiss->SetParameter(1,1);
                         if (bool_pulseShapeExists) {
-                            sprintf(nameHist,"OPSAshape_%d_%d_%d",eeeventID,OPSA_detID,iHistNr);
-                            sprintf(nameHistTitle,"OPSAshape_%d_%d_%d;time (ns);Pulse signal",eeeventID,OPSA_detID,iHistNr);
-                            if (verboseLevel>1) G4cout<<"VERBOSE 2 : creating a new TH1D for OPSAshape" <<"\n";
-                            OPSAshape = new TH1D(nameHist, nameHistTitle, OPSAhistoNbin, OPSAhistoMin, OPSAhistoMax);
-                            sprintf(nameHist,"OPSA_CFD_%d_%d_%d",eeeventID,OPSA_detID,iHistNr);
-                            sprintf(nameHistTitle,"OPSA_CFD_%d_%d_%d;time (ns);CFD signal",eeeventID,OPSA_detID,iHistNr);
-                            if (verboseLevel>1) G4cout<<"VERBOSE 2 : creating a new TH1D for OPSA_CFD" <<"\n";
-                            OPSA_CFD = new TH1D(nameHist, nameHistTitle, OPSAhistoNbin, OPSAhistoMin, OPSAhistoMax);
+			  snprintf(nameHist,sizeof(nameHist),"OPSAshape_%d_%d_%d",eeeventID,OPSA_detID,iHistNr);
+			  snprintf(nameHistTitle,sizeof(nameHistTitle),"OPSAshape_%d_%d_%d;time (ns);Pulse signal",eeeventID,OPSA_detID,iHistNr);
+			  if (verboseLevel>1) G4cout<<"VERBOSE 2 : creating a new TH1D for OPSAshape" <<"\n";
+			  OPSAshape = new TH1D(nameHist, nameHistTitle, OPSAhistoNbin, OPSAhistoMin, OPSAhistoMax);
+			  snprintf(nameHist,sizeof(nameHist),"OPSA_CFD_%d_%d_%d",eeeventID,OPSA_detID,iHistNr);
+			  snprintf(nameHistTitle,sizeof(nameHistTitle),"OPSA_CFD_%d_%d_%d;time (ns);CFD signal",eeeventID,OPSA_detID,iHistNr);
+			  if (verboseLevel>1) G4cout<<"VERBOSE 2 : creating a new TH1D for OPSA_CFD" <<"\n";
+			  OPSA_CFD = new TH1D(nameHist, nameHistTitle, OPSAhistoNbin, OPSAhistoMin, OPSAhistoMax);
                         }
                     }
                     if (bool_StoreThisOPSAhistSUMMED) {
                         iHistNrSUM++;
-                        char nameHist[200];  sprintf(nameHist,"OPSAhistSUM_%d_%d",OPSA_detID,iHistNrSUM);
-                        char nameHist0[200];  sprintf(nameHist0,"OPSAhistSUM0_%d_%d",OPSA_detID,iHistNrSUM);
+                        char nameHist[200];  snprintf(nameHist,sizeof(nameHist),"OPSAhistSUM_%d_%d",OPSA_detID,iHistNrSUM);
+                        char nameHist0[200];  snprintf(nameHist0,sizeof(nameHist0),"OPSAhistSUM0_%d_%d",OPSA_detID,iHistNrSUM);
                         if (mapOfOPSAsumHistograms.find(nameHist) != mapOfOPSAsumHistograms.end()) {
                             OPSAhistoSUM  = mapOfOPSAsumHistograms[nameHist];
                             OPSAhistoSUM0 = mapOfOPSAsum0Histograms[nameHist0];
                             //      G4cout<<" OPSAhistoSUM histogram found:"<<OPSAhistoSUM<<G4endl;
                         }
                         else {  // create histogram because it does not exist
-                            char nameHistTitle[200]; sprintf(nameHistTitle,"OPSAhistSUM_%d_%d;time (ns);Nr of photons",OPSA_detID,iHistNrSUM);
-                            char nameHistTitle0[200]; sprintf(nameHistTitle0,"OPSAhistSUM0_%d_%d;time (ns);Nr of photons",OPSA_detID,iHistNrSUM);
-                            if (verboseLevel>1) G4cout<<"VERBOSE 2 : creating new TH1Ds for OPSAhistoSUM,0" <<"\n";
-                            OPSAhistoSUM = new TH1D(nameHist, nameHistTitle, OPSAhistoNbin, OPSAhistoMin, OPSAhistoMax);
-                            OPSAhistoSUM0= new TH1D(nameHist0,nameHistTitle0,OPSAhistoNbin, OPSAhistoMin, OPSAhistoMax);
-                            mapOfOPSAsumHistograms.insert(std::pair<std::string,TH1D*>(nameHist,OPSAhistoSUM));
-                            mapOfOPSAsum0Histograms.insert(std::pair<std::string,TH1D*>(nameHist0,OPSAhistoSUM0));
-                            //      G4cout<<" New OPSAhistoSUM histogram created:"<<OPSAhistoSUM<<G4endl;
+			  char nameHistTitle[200]; snprintf(nameHistTitle,sizeof(nameHistTitle),"OPSAhistSUM_%d_%d;time (ns);Nr of photons",OPSA_detID,iHistNrSUM);
+			  char nameHistTitle0[200]; snprintf(nameHistTitle0,sizeof(nameHistTitle0),"OPSAhistSUM0_%d_%d;time (ns);Nr of photons",OPSA_detID,iHistNrSUM);
+			  if (verboseLevel>1) G4cout<<"VERBOSE 2 : creating new TH1Ds for OPSAhistoSUM,0" <<"\n";
+			  OPSAhistoSUM = new TH1D(nameHist, nameHistTitle, OPSAhistoNbin, OPSAhistoMin, OPSAhistoMax);
+			  OPSAhistoSUM0= new TH1D(nameHist0,nameHistTitle0,OPSAhistoNbin, OPSAhistoMin, OPSAhistoMax);
+			  mapOfOPSAsumHistograms.insert(std::pair<std::string,TH1D*>(nameHist,OPSAhistoSUM));
+			  mapOfOPSAsum0Histograms.insert(std::pair<std::string,TH1D*>(nameHist0,OPSAhistoSUM0));
+			  //      G4cout<<" New OPSAhistoSUM histogram created:"<<OPSAhistoSUM<<G4endl;
                         }
                     }
 

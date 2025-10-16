@@ -107,7 +107,7 @@ void musrSteppingAction::UserSteppingAction(const G4Step* aStep)  {
   //  suspend the track if too many steps has already happened (relevant at high field)
   if (aTrack->GetCurrentStepNumber()>musrParameters::maximumNrOfStepsPerTrack) {
     char eMessage[200];
-    sprintf(eMessage,"musrSteppingAction: Current number of steps for the track > %d ==> TRACK KILLED",
+    snprintf(eMessage,sizeof(eMessage),"musrSteppingAction: Current number of steps for the track > %d ==> TRACK KILLED",
 	    musrParameters::maximumNrOfStepsPerTrack);
     musrErrorMessage::GetInstance()->musrError(WARNING,eMessage,true);
     G4double x = postStepPosition.x()/CLHEP::mm;
@@ -126,7 +126,7 @@ void musrSteppingAction::UserSteppingAction(const G4Step* aStep)  {
     G4cout<<"musrSteppingAction: event "<<fRunManager->GetCurrentEvent()->GetEventID()
   	  <<" aborted because calculation took already "<<musrParameters::maximumTimePerEvent<<" seconds."<<G4endl;
     char eMessage[200];
-    sprintf(eMessage,"musrSteppingAction:  event aborted because its calculation takes more than %d seconds.",
+    snprintf(eMessage,sizeof(eMessage),"musrSteppingAction:  event aborted because its calculation takes more than %d seconds.",
 	    musrParameters::maximumTimePerEvent);
     musrErrorMessage::GetInstance()->musrError(WARNING,eMessage,true);
     myRootOutput->SetEventWeight(0);
@@ -160,7 +160,7 @@ void musrSteppingAction::UserSteppingAction(const G4Step* aStep)  {
     // There is an example how to delete the track in example/novice/N04.
     // It is done in a different way here, because the example/novice/N04 was not doing
     // exactly what I wanted.
-    if((actualVolume(0,8)=="log_kill")||(actualVolume(0,8)=="log_Kill")) {
+    if((actualVolume.substr(0,8)=="log_kill")||(actualVolume.substr(0,8)=="log_Kill")) {
       aTrack->SetTrackStatus(fStopAndKill);   // suspend the track
     }
     if ((p_name=="nu_mu")||(p_name=="anti_nu_mu")||(p_name=="nu_e")||(p_name=="anti_nu_e")) {
@@ -393,7 +393,7 @@ void musrSteppingAction::UserSteppingAction(const G4Step* aStep)  {
       // There is an example how to delete the track in example/novice/N04.
       // It is done in a different way here, because the example/novice/N04 was not doing
       // exactly what I wanted.
-      if((actualVolume(0,10)=="log_shield")||(actualVolume(0,10)=="log_Shield")) {
+      if((actualVolume.substr(0,10)=="log_shield")||(actualVolume.substr(0,10)=="log_Shield")) {
 	aTrack->SetTrackStatus(fStopAndKill);   // suspend the track
       }
     }
@@ -424,7 +424,7 @@ G4bool  musrSteppingAction::GetInfoAboutOldTrack(G4int trackID, G4int& parentTra
   if ( itr==myOldTracksMap.end() ) {
     //  if ((ind==0)||(ind>=maxNumberOfOldTracks)) {
     char eMessage[200];
-    sprintf(eMessage,"musrSteppingAction::GetInfoAboutOldTrack: trackID not found in myOldTracksMap, det_VvvXXX variables might be affected");
+    snprintf(eMessage,sizeof(eMessage),"musrSteppingAction::GetInfoAboutOldTrack: trackID not found in myOldTracksMap, det_VvvXXX variables might be affected");
     musrErrorMessage::GetInstance()->musrError(WARNING,eMessage,false);
     G4cout<<"                                  Requested trackID="<<trackID<<G4endl;
     //    G4cout<<"Saved tracks:"<<G4endl;
