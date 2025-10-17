@@ -22,6 +22,41 @@ check_path() {
   return 1
 }
 
+# ensure LIB is loaded
+check_lib() {
+    local lib_to_check="$1"
+
+    case "$(uname)" in
+        Darwin*) lib_var="DYLD_LIBRARY_PATH" ;;
+        Linux*)  lib_var="LD_LIBRARY_PATH" ;;
+        *)       lib_var="LD_LIBRARY_PATH" ;;
+    esac
+
+    # Get the actual value of the variable, not the variable name
+    local current_path="${!lib_var}"
+
+    # Loop through each directory in the library path
+    if [ -n "$current_path" ]; then
+        IFS=':' read -ra lib_array <<< "$current_path"
+        for dir in "${lib_array[@]}"; do
+            if [ "$dir" == "$lib_to_check" ]; then
+                echo "Path '$lib_to_check' exists in \$$lib_var."
+                return 0
+            fi
+        done
+    fi
+
+    echo "Adding '$lib_to_check' to $lib_var"
+    
+    # Fix the export - use the variable value, not a literal slash
+    if [ -z "$current_path" ]; then
+        export "$lib_var"="$lib_to_check"
+    else
+        export "$lib_var"="$lib_to_check:$current_path"
+    fi
+    return 1
+}
+
 # Setup important dependencies
 if [[ $DOMAIN == "sjtulocal" ]]; then
     echo "source /cvmfs/sft.cern.ch/lcg/views/LCG_101/x86_64-centos7-gcc11-opt/setup.sh"
@@ -34,19 +69,19 @@ else
     else
 	echo source geant4.sh
 	source geant4.sh
-	GEANT4VERSION=$(geant4-config --version)
+	GEANT4VERSION=$(geant4-config --version 2>/dev/null || echo "Unknown")
     fi
 
     # ROOT
-    if ! [ -x "$(command -v root)" ]; then
+    if ! which root >/dev/null 2>&1; then
         echo 'Error: ROOT is not installed.' >&2
-        exit
+        exit 1
     else
-        ROOTVERSION=$(root-config --version)
+        ROOTVERSION=$(root-config --version 2>/dev/null || echo "Unknown")
     fi
 fi
 
-
+echo HERE
     
 cd $CWD/musrSim-upgrade-public
 
@@ -66,12 +101,15 @@ fi
 check_path $CWD/scripts
 check_path $CWD/local/bin
 
+# append lib
+check_lib $(geant4-config --libs | sed 's/.*-L\([^ ]*\).*/\1/')
+
 echo "================================================================"
 echo "                         SETUP SUMMARY"
 echo "================================================================"
 echo "⚡ Geant4 version     : ${GEANT4VERSION:-Not Found}"
 echo "🌱 ROOT version       : ${ROOTVERSION:-Not Found}"
-echo "🔬 musrsim installed  : $(command -v musrSim-upgrade-public 2>/dev/null || echo 'Not Found')"
+echo "🔬 musrsim installed  : $(which musrSim_upgrade 2>/dev/null || echo 'Not Found')"
 echo "================================================================"
 echo "Note : If you wish to reinstall, delete the build folder in musrSim and rerun source setup.sh"
 
