@@ -98,7 +98,7 @@ void F04ElementField::construct()
   G4String volumeName=lvolume->GetName();
   if (fTouchable->GetVolume()->GetLogicalVolume() != lvolume) {
     char eMessage[200];
-    sprintf(eMessage,"F04ElementField.cc::construct(): Centre (point of origin) of the field outside the assigned logical volume \"%s\".",
+    snprintf(eMessage,sizeof(eMessage),"F04ElementField.cc::construct(): Centre (point of origin) of the field outside the assigned logical volume \"%s\".",
 	    volumeName.c_str());
     musrErrorMessage::GetInstance()->musrError(FATAL,eMessage,false);
   }

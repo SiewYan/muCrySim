@@ -848,7 +848,7 @@ G4VPhysicalVolume* musrDetectorConstruction::Construct()  {
 	if (strncmp(tmpString2,"log_",4)==0) {
 	  G4LogicalVolume* pLogVol = FindLogicalVolume(tmpString2);
 	  if (pLogVol==NULL) {
-	    sprintf(eMessage,"musrDetectorConstruction.cc::Construct(): visattributes requested for %s, but this volume was not found.",tmpString2); 
+	    snprintf(eMessage,sizeof(eMessage),"musrDetectorConstruction.cc::Construct(): visattributes requested for %s, but this volume was not found.",tmpString2); 
 	    musrErrorMessage::GetInstance()->musrError(WARNING,eMessage,false);
 	  }	
 	  else {SetColourOfLogicalVolume(pLogVol,tmpString3);}
@@ -996,7 +996,7 @@ G4VPhysicalVolume* musrDetectorConstruction::Construct()  {
 	if (musrParameters::boolG4OpticalPhotons) {
 	  musrScintSD* myMusrScintSD = musrScintSD::GetInstance();
 	  if (myMusrScintSD==NULL) {
-	    sprintf(eMessage,"musrDetectorConstruction.cc::Construct():  musrScintSD::GetInstance() is NULL - no musr/ScintSD set?");
+	    snprintf(eMessage,sizeof(eMessage),"musrDetectorConstruction.cc::Construct():  musrScintSD::GetInstance() is NULL - no musr/ScintSD set?");
 	    musrErrorMessage::GetInstance()->musrError(FATAL,eMessage,false);
 	  }
 	  char varName[100];
@@ -1086,8 +1086,8 @@ G4VPhysicalVolume* musrDetectorConstruction::Construct()  {
 	  // Find out the logical volume, to which the field will be placed:
 	  G4LogicalVolume* logVol = FindLogicalVolume(logicalVolumeName);
 	  if (logVol==NULL) {
-	    sprintf(eMessage,"musrDetectorConstruction.cc::Construct(): GLOBAL FIELD: Logical volume \"%s\" not found.",
-		    logicalVolumeName);
+	    snprintf(eMessage,sizeof(eMessage),"musrDetectorConstruction.cc::Construct(): GLOBAL FIELD: Logical volume \"%s\" not found.",
+		     logicalVolumeName);
 	    musrErrorMessage::GetInstance()->musrError(FATAL,eMessage,false);
 	  }
 	  	  
@@ -1119,7 +1119,7 @@ G4VPhysicalVolume* musrDetectorConstruction::Construct()  {
 	  G4ThreeVector position = G4ThreeVector(positionX,positionY,positionZ);
 	  G4LogicalVolume* logVol = FindLogicalVolume(logicalVolumeName);
 	  if (logVol==NULL) {
-	    sprintf(eMessage,"musrDetectorConstruction.cc::Construct(): GLOBAL FIELD (uniform): Logical volume \"%s\" not found.", logicalVolumeName);
+	    snprintf(eMessage,sizeof(eMessage),"musrDetectorConstruction.cc::Construct(): GLOBAL FIELD (uniform): Logical volume \"%s\" not found.", logicalVolumeName);
 	    musrErrorMessage::GetInstance()->musrError(FATAL,eMessage,false);
 	  }
 	  G4double fieldValue_tmp[6] = {
@@ -1138,7 +1138,7 @@ G4VPhysicalVolume* musrDetectorConstruction::Construct()  {
 		 &gradientValue,&gradientValueFinal,&gradientNrOfSteps);
 	  G4LogicalVolume* logVol = FindLogicalVolume(logicalVolumeName);
 	  if (logVol==NULL) {
-	    sprintf(eMessage,"musrDetectorConstruction.cc::Construct(): GLOBAL FIELD: Logical volume \"%s\" not found.",
+	    snprintf(eMessage,sizeof(eMessage),"musrDetectorConstruction.cc::Construct(): GLOBAL FIELD: Logical volume \"%s\" not found.",
 		    logicalVolumeName);
 	    musrErrorMessage::GetInstance()->musrError(FATAL,eMessage,false);
 	  }
@@ -1155,12 +1155,12 @@ G4VPhysicalVolume* musrDetectorConstruction::Construct()  {
 	  G4PropagatorInField* propagMgr = G4TransportationManager::GetTransportationManager()->GetPropagatorInField();
 	  if (fieldMgr==NULL) {
 	    ReportProblemInStearingFile(line);
-	    sprintf(eMessage,"musrDetectorConstruction.cc::Construct(): G4FieldManager not found: fieldMgr=NULL");
+	    snprintf(eMessage,sizeof(eMessage),"musrDetectorConstruction.cc::Construct(): G4FieldManager not found: fieldMgr=NULL");
 	    musrErrorMessage::GetInstance()->musrError(FATAL,eMessage,false);
 	  }
 	  if (propagMgr==NULL) {
 	    ReportProblemInStearingFile(line);
-	    sprintf(eMessage,"musrDetectorConstruction.cc::Construct(): G4PropagatorInField not found: propagMgr=NULL");
+	    snprintf(eMessage,sizeof(eMessage),"musrDetectorConstruction.cc::Construct(): G4PropagatorInField not found: propagMgr=NULL");
 	    musrErrorMessage::GetInstance()->musrError(FATAL,eMessage,false);
 	  }
 	  else {
@@ -1217,7 +1217,7 @@ G4VPhysicalVolume* musrDetectorConstruction::Construct()  {
 	      if (strcmp(tmpString2,"printFieldDerivativeAtPoint")==0)  myGlobalField->AddPointForFieldDerivativeTesting(G4ThreeVector(p0,p1,p2));
 	    }
 	    else {
-	      sprintf(eMessage,"musrDetectorConstruction.cc::Construct(): printFieldValueAtPoint requested, but field not found");
+	      snprintf(eMessage,sizeof(eMessage),"musrDetectorConstruction.cc::Construct(): printFieldValueAtPoint requested, but field not found");
 	      musrErrorMessage::GetInstance()->musrError(SERIOUS,eMessage,false);
 	    }
 	  }
@@ -1269,7 +1269,8 @@ G4VPhysicalVolume* musrDetectorConstruction::Construct()  {
 	  musrParameters::storeOnlyEventsWithHits = true;
 	  musrParameters::storeOnlyEventsWithHitInDetID = variable;
 	  char eMessage[200];
-	  sprintf(eMessage,
+	  snprintf(eMessage,
+		   sizeof(eMessage),
 		  "musrDetectorConstruction.cc:: Only the events with at least one hit in the detector ID=%d are stored",
 		  variable);
 	  musrErrorMessage::GetInstance()->musrError(INFO,eMessage,false);
@@ -1282,9 +1283,10 @@ G4VPhysicalVolume* musrDetectorConstruction::Construct()  {
 	if (variable!=0){ 
 	  musrParameters::storeOnlyEventsWithMuonsDecayedInDetID = variable;
 	  char eMessage[200];
-	  sprintf(eMessage,
-		  "musrDetectorConstruction.cc:: Only the events, in which muon stop in the detector ID=%d, are stored",
-		  variable);
+	  snprintf(eMessage,
+		   sizeof(eMessage),
+		   "musrDetectorConstruction.cc:: Only the events, in which muon stop in the detector ID=%d, are stored",
+		   variable);
 	  musrErrorMessage::GetInstance()->musrError(INFO,eMessage,false);
 	}
       } 
@@ -1365,9 +1367,10 @@ G4VPhysicalVolume* musrDetectorConstruction::Construct()  {
 	  mySteppingAction -> SetVolumeForMuonEventReweighting(G4String(tmpLogVolName),eventWeight);
 	}
 	else {
-	  sprintf(eMessage,
-		  "musrDetectorConstruction.cc:: logicalVolumeToBeReweighted - reweighting for particle %s not yet implemented",
-		  tmpString2);
+	  snprintf(eMessage,
+		   sizeof(eMessage),
+		   "musrDetectorConstruction.cc:: logicalVolumeToBeReweighted - reweighting for particle %s not yet implemented",
+		   tmpString2);
 	  musrErrorMessage::GetInstance()->musrError(FATAL,eMessage,true);
 	}
       }
@@ -1399,9 +1402,10 @@ G4VPhysicalVolume* musrDetectorConstruction::Construct()  {
 	  }
 	  else {
 	    G4cout<<G4endl;
-	    sprintf(eMessage,
-		  "musrDetectorConstruction.cc:: logicalVolume %s not found when requesting its association with the G4Region %s.",
-		    charLogicalVolumeName,charRegionName);
+	    snprintf(eMessage,
+		     sizeof(eMessage),
+		     "musrDetectorConstruction.cc:: logicalVolume %s not found when requesting its association with the G4Region %s.",
+		     charLogicalVolumeName,charRegionName);
 	    musrErrorMessage::GetInstance()->musrError(SERIOUS,eMessage,false);
 	  }
 	}
