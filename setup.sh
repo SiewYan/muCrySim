@@ -81,9 +81,50 @@ else
     fi
 fi
 
-echo HERE
+
+## cry data replace
+# Replace hardcoded path with current directory
+replace_cry_data_path() {
+    local source_file="$1/src/musrPrimaryGeneratorAction.cc"
+    local current_dir=$(pwd)
+    local new_path="$current_dir/cryData"
     
+    if [ ! -f "$source_file" ]; then
+        print_warning "File not found: $source_file"
+        return
+    fi
+    
+    # Check if the line already has the correct path
+    if grep -q "std::string cryDataPath = \"$new_path\";" "$source_file"; then
+        echo "CRY data path is already correct: $new_path"
+        return 0
+    fi
+    
+    # Check if the pattern exists but with different path
+    if grep -q 'std::string cryDataPath =' "$source_file"; then
+        local current_line=$(grep 'std::string cryDataPath =' "$source_file")
+        echo "Found existing line: $current_line"
+        echo "Replacing with: $new_path"
+        
+        # Perform replacement
+        sed -i.bak "s|std::string cryDataPath = [^;]*;|std::string cryDataPath = \"$new_path\";|" "$source_file"
+        
+        # Verify
+        if grep -q "std::string cryDataPath = \"$new_path\";" "$source_file"; then
+            echo "Successfully updated CRY data path"
+        else
+            echo "Failed to update CRY data path"
+            return 1
+        fi
+    else
+        echo "Target line 'std::string cryDataPath =' not found in $source_file"
+        return 1
+    fi
+}
+
+#
 cd $CWD/musrSim-upgrade-public
+replace_cry_data_path "."
 
 if [[ ! -e "build" ]];
 then
