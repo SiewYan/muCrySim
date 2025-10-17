@@ -102,12 +102,12 @@ int main(int argc,char** argv) {
             if (!cmd1.compare("/musr/command") && !cmd2.compare("SetOutputFileName")){
                 char output_num[4];
                 if (!cmd3.compare("DEFAULT")) {
-                    sprintf(output_num, "%03d", atoi(argv[1]));
-                    std::cout << "\nmusrSim.cc: Set default output ROOT file: " <<"data/musrSim_jp" << output_num << ".root\n" << std::endl;
+		  snprintf(output_num, sizeof(output_num) , "%03d", atoi(argv[1]));
+		  std::cout << "\nmusrSim.cc: Set default output ROOT file: " <<"data/musrSim_jp" << output_num << ".root\n" << std::endl;
                 }
                 else {
-                    name = cmd3;
-                    std::cout << "\nmusrSim.cc: Set output ROOT file: " << "data/musrSim_jp" << output_num << "_" << cmd3 << ".root\n" << std::endl;
+		  name = cmd3;
+		  std::cout << "\nmusrSim.cc: Set output ROOT file: " << "data/musrSim_jp" << output_num << "_" << cmd3 << ".root\n" << std::endl;
                 }
             }
             else if (!cmd1.compare("/musr/command") && !cmd2.compare("SetRndSeed")){

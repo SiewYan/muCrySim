@@ -45,7 +45,7 @@
 
 //std::filesystem::path currentPath = std::filesystem::current_path();
 
-std::string cryDataPath = "/tobereplace/cryData";
+std::string cryDataPath = "/Users/shoh/Works/muography/cryData";
 
 std::unique_ptr<EcoMug> musrPrimaryGeneratorAction::fEcoMug = std::make_unique<EcoMug>();            // Y. ZENG 25 Apr 2024
 musrPrimaryGeneratorAction::SkyShape musrPrimaryGeneratorAction::fSkyShape = kPlane;                 // Y. ZENG 25 Apr 2024
